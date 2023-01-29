@@ -35,30 +35,6 @@
   color: #000;
 }
 
-.sidebox_pink{
-  width: 10px;
-  height: 35px;
-  margin: 0 15px 15px 0;
-  background-color: #ff3363;
-}
-
-.sidebox_yellow{
-  width: 10px;
-  height: 35px;
-  margin: 0 15px 15px 0;
-  background-color: #ffc233;
-}
-
-.box {
-  width: 300px;
-  height: 240px;
-  margin: 0 20px 131px 0px;
-  padding: 20px 82px 21px 0;
-  border-radius: 10px;
-  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
 .subtext {
   width: 100px;
   height: 49px;
@@ -72,6 +48,30 @@
   letter-spacing: normal;
   text-align: left;
   color: #000;
+}
+
+.box {
+  width: 300px;
+  height: 240px;
+  margin: 0 20px 131px 0px;
+  padding: 20px 82px 21px 0;
+  border-radius: 10px;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.sidebox_pink{
+  width: 10px;
+  height: 35px;
+  margin: 0 15px 15px 0;
+  background-color: #ff3363;
+}
+
+.sidebox_yellow{
+  width: 10px;
+  height: 35px;
+  margin: 0 15px 15px 0;
+  background-color: #ffc233;
 }
 
 .iconbox {
