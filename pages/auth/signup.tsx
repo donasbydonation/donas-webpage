@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styles from '@/styles/signup.module.css'
 
 function DuplicationText(){
-  const [duplication, setDuplication] = useState(true)
+  const [duplication, setDuplication] = useState(false)
   if (duplication === false){
     return
   }
@@ -17,38 +17,42 @@ export default function Signup() {
     return (
       <div>
           <div className={styles.box}>
-                <div style={{display:"flex"}}>
-                    <div className={styles.sidebox_pink}></div>
-                    <span className={styles.span}>
-                        회원가입
-                    </span>
-                </div>
+              <div style={{display:"flex"}}>
+                  <div className={styles.sidebox_pink}></div>
+                  <span className={styles.span}>
+                      회원가입
+                  </span>
+              </div>
 
-                <div style={{display:"flex"}}>
-                  <span className={styles.subtext}>아이디</span>
-                  <div>
-                      <div><input type="text" /></div>
-                      <div><DuplicationText /></div>
+              <div> 
+                  <div style={{display:"flex"}} className={styles.input}>
+                      <span className={styles.subtext}>아이디</span>
+                      <div>
+                          <div><input type="text" /></div>
+                          <div><DuplicationText /></div>
+                      </div>
+                      <button>중복확인</button>
                   </div>
-                  <button>중복확인</button>
-                </div>
 
-                <div style={{display:"flex"}}>
-                  <span className={styles.subtext}>비밀번호</span>
-                  <input type="text" />
-                </div>
+                  <div style={{display:"flex"}} className={styles.input}>
+                      <span className={styles.subtext}>비밀번호</span>
+                      <input type="text" />
+                  </div>
 
-                <div style={{display:"flex"}}>
-                  <span className={styles.subtext}>비밀번호 확인</span>
-                  <input type="text" />
-                </div>
+                  <div style={{display:"flex"}} className={styles.input}>
+                      <span className={styles.subtext}>비밀번호 확인</span>
+                      <input type="text" />
+                  </div>
 
-                <div style={{display:"flex"}}>
-                  <span className={styles.subtext}>이메일</span>
-                  <input type="email" />
-                </div>
+                  <div style={{display:"flex"}} className={styles.input}>
+                      <span className={styles.subtext}>이메일</span>
+                      <input type="email" />
+                  </div>
 
-                <button>회원가입</button>
+                  <div className={styles.input}>
+                      <button>가입하기</button>
+                  </div>
+              </div>
           </div>
       </div>
     );
