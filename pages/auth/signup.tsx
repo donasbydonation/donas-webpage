@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import styles from '@/styles/signup.module.css'
 
 export default function Signup() {
-    const [duplicationTrue, setDuplicationTrue] = useState(false)
-    const [sendAuthTrue, setSendAuthTrue] = useState(false)
+    const [isCheckDuplication, setIsCheckDuplication] = useState(false)
+    const [isSendAuth, setIsSendAuth] = useState(false)
 
     const [idMessage, setIdMessage] = useState('')
     const [duplicationMessage, setDuplicationMessage] = useState('')
@@ -19,9 +19,10 @@ export default function Signup() {
     const [authcode, setAuthcode] = useState('')
    
 
+    // onChange Method
     const handleIdChange = (e) => {
         setId(e.target.value);
-        setDuplicationTrue(false)
+        setIsCheckDuplication(false)
     };
     useEffect(() =>{
         const idRegEx = /^(?=.*[a-zA-Z])(?=.*[0-9]).{4,12}$/;
@@ -92,18 +93,19 @@ export default function Signup() {
     })
       
 
+    // onClick Method
     function handleDuplicationClick(){
-        setDuplicationTrue(true)
+        setIsCheckDuplication(true)
         setDuplicationMessage('사용 가능한 아이디입니다.')
     }
 
 
     function handleSendAuthClick(){
-        if (sendAuthTrue === true){
+        if (isSendAuth === true){
             setSendAuthMessage('다시 전송')
         }
         else {
-            setSendAuthTrue(true)
+            setIsSendAuth(true)
         }
     }
 
@@ -118,8 +120,9 @@ export default function Signup() {
     }
 
 
+    // Component
     function SendAuthTimer(){
-        if (sendAuthTrue === true){
+        if (isSendAuth === true){
             return (
                 <div>timer 영역입니다.</div>
             );
@@ -145,7 +148,7 @@ export default function Signup() {
                       <span className={styles.subtext}>아이디</span>
                       <div>
                           <div><input type="text" name="id" value={id} onChange={handleIdChange} placeholder="4~12자의 영문 대소문자 및 숫자 조합"/></div>
-                          {duplicationTrue? duplicationMessage:idMessage}
+                          {isCheckDuplication? duplicationMessage:idMessage}
                       </div>
                       <button onClick={handleDuplicationClick}>중복확인</button>
                   </div>
