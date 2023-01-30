@@ -1,4 +1,3 @@
-import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Top from "../src/components/Top"
 import Footer from "../src/components/Footer"
