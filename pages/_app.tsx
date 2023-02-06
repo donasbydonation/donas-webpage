@@ -4,10 +4,6 @@ import Footer from "../src/components/Footer"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <div>
-      <Top />
       <Component {...pageProps} />
-      <Footer />
-    </div>
   );
 }

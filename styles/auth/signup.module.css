@@ -1,0 +1,58 @@
+.span {
+    width: 200px;
+    height: 35px;
+    margin: 0 37px 15px 15px;
+    font-family: Pretendard;
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 0.93;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000;
+  }
+  
+.subtext {
+width: 140px;
+height: 49px;
+margin: 0 15px 0 15px;
+font-family: Pretendard;
+font-size: 20px;
+font-weight: normal;
+font-stretch: normal;
+font-style: normal;
+line-height: 1.25;
+letter-spacing: normal;
+text-align: left;
+color: #000;
+}
+
+.box {
+width: 600px;
+height: 600px;
+margin: 50px 20px 131px 680px;
+padding: 20px 82px 21px 0;
+border-radius: 10px;
+box-shadow: 0 3px 20px 0 rgba(0, 0, 0, 0.1);
+background-color: #fff;
+}
+
+.sidebox_pink{
+    width: 10px;
+    height: 35px;
+    margin: 0 15px 15px 0;
+    background-color: #ff3363;
+  }
+  
+.sidebox_yellow{
+width: 10px;
+height: 35px;
+margin: 0 15px 15px 0;
+background-color: #ffc233;
+}
+
+.input{
+    margin: 20px 0 0 20px;
+    text-align: center;
+}

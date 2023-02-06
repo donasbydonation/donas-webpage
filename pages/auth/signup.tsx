@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
-import styles from '@/styles/signup.module.css'
+import styles from '@/styles/auth/signup.module.css'
 
 export default function Signup() {
     const [isCheckDuplication, setIsCheckDuplication] = useState(false)
     const [isSendAuth, setIsSendAuth] = useState(false)
+    const [isAuth, setIsAuth] = useState(false)
+    const [isId, setIsId] = useState(false)
+    const [isPw1, setIsPw1] = useState(false)
+    const [isPw2, setIsPw2] = useState(false)
+    const [isEmail, setIsEmail] = useState(false)
+    const [isAuthcode, setIsAuthcode] = useState(false)
 
     const [idMessage, setIdMessage] = useState('')
     const [duplicationMessage, setDuplicationMessage] = useState('')
