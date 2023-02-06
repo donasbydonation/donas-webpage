@@ -1,26 +1,46 @@
 import Header from "../src/components/Header"
+import { useEffect, useState } from 'react';
+import axios from 'axios'
 
 export default function Home() {
-//    const [innerWidth, setInnerWidth] = window.innerWidth
+    const [email, setEmail] = useState('')
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    };
+    useEffect(() =>{
+        setEmail((currentValue) => currentValue);
+        console.log(email)
+    })
+
+    function handleEmailSubmit(e){
+        axios.post('http://localhost:8080/api/v1/pre-registrations', {email:{email}})
+        .then(res => {
+          console.log(res);
+        })
+    }
+
+
     const imageMargin = {
-        width:"0%"
+        width:"0%",
     }
     const imageWidth = {
-        maxWidth:"200%",
-        width:"200%",
+        width:"1200px",
         height:"100%",
         overflow:"hidden",
+        margin:"auto",
     }
     const cssInput = {
         width:"250px",
         height:"50px",
         border:"solid",
-        borderRadius:"25px",
+        borderRadius:"30px",
         borderColor:"#ff3363",
         fontSize:"20px",
-        padding:"2px 2px 2px 10px"
+        padding:"2px 2px 2px 20px"
     }
     const cssButton = {
+        cursor:"pointer",
         width:"100px",
         height:"60px",
         border:"solid",
@@ -33,15 +53,16 @@ export default function Home() {
     return (
         <div>
             <Header />
+            <div style={{padding:"10px"}}></div>
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
-                <img src= "/images/donasRendingImages/rending01.jpg" alt="" style={imageWidth}/>
+                <img src= "/images/donasRendingImages/test1.png" alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
 
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
-                <img src= "/images/donasRendingImages/rending02.jpg" alt="" style={imageWidth}/>
+                <img src= "/images/donasRendingImages/test2.png" alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
             
@@ -49,9 +70,9 @@ export default function Home() {
             {/* 이메일 등록 */}
             <div style={{display:"flex"}}>
                 <div style={{display:"flex", margin:"auto"}}>
-                   <input type="email" placeholder="이메일을 입력하세요!" style={cssInput}/>  
+                   <input type="email" placeholder="이메일을 입력하세요!" style={cssInput} onChange={handleEmailChange}/>  
                    <div style={{width:"5px"}}></div>
-                   <button style={cssButton}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
+                   <button style={cssButton} onClick={handleEmailSubmit}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
                 </div>
             </div>
 
