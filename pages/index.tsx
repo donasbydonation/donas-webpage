@@ -3,18 +3,18 @@ import { useEffect, useState } from 'react';
 import axios from 'axios'
 
 export default function Home() {
-    const [email, setEmail] = useState('')
+    const [userEmail, setUserEmail] = useState('')
 
     const handleEmailChange = (e) => {
-        setEmail(e.target.value);
+        setUserEmail(e.target.value);
     };
     useEffect(() =>{
-        setEmail((currentValue) => currentValue);
-        console.log(email)
+        setUserEmail((currentValue) => currentValue);
+        console.log(userEmail)
     })
 
     function handleEmailSubmit(e){
-        axios.post('http://localhost:8080/api/v1/pre-registrations', {email:{email}})
+        axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
         .then(res => {
           console.log(res);
         })
