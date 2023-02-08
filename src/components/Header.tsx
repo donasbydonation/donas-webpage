@@ -23,6 +23,8 @@ export default function Header(){
         backgroundColor:"#fffff",
         border: "2px ",
     }
+
+    
     return (
         <div style={header}>
             <div style={{width:"15%"}}></div>
@@ -30,18 +32,13 @@ export default function Header(){
             
             <div style={{width:"60%"}}></div>
             
-            <Link href="/auth/login">
+            <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
                 <button style={button}>공지사항</button>
             </Link>
 
-            <Link href="/auth/login">
+            <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
                 <button style={button}>고객센터</button>
             </Link>
-
-            <Link href="/auth/login">
-                <button style={button}>로그인</button>
-            </Link>
-
             <div style={{width:"15%"}}></div>
         </div>
     );
