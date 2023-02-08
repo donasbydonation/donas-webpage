@@ -6,6 +6,47 @@ export default function Home() {
     const imagePath = '/images/donasRendingImages1200'
     const [userEmail, setUserEmail] = useState('')
     const [isUserEmail, setIsUserEmail] = useState(false)
+    const [isMouseOnEmailButton, setIsMouseOnEmailButton] = useState(false)
+
+    const imageMargin = {
+        width:"0%",
+    }
+    const imageWidth = {
+        width:"1200px",
+        height:"100%",
+        overflow:"hidden",
+        margin:"auto",
+    }
+    const inputCss = {
+        width:"250px",
+        height:"50px",
+        border:"solid",
+        borderRadius:"30px",
+        borderColor:"#ff3363",
+        fontSize:"20px",
+        padding:"2px 2px 2px 20px",
+        margin:"0 5px 0 0 "
+    }
+    const buttonCss01 = {
+        cursor:"pointer",
+        width:"100px",
+        height:"60px",
+        border:"solid",
+        borderRadius:"15px",
+        background:"#ff3363",
+        color:"#ff3363",
+        textAlign:"center",
+    }
+    const buttonCss02 = {
+        cursor:"pointer",
+        width:"100px",
+        height:"60px",
+        border:"solid",
+        borderRadius:"15px",
+        background:"#ff3363",
+        color:"#ffffff",
+        textAlign:"center",
+    }
 
 
     const handleEmailChange = (e) => {
@@ -45,36 +86,12 @@ export default function Home() {
     }
 
 
-    const imageMargin = {
-        width:"0%",
+    function handleOnMouseEmailButtonOver(){
+        setIsMouseOnEmailButton(true)
     }
-    const imageWidth = {
-        width:"1200px",
-        height:"100%",
-        overflow:"hidden",
-        margin:"auto",
+    function handleOnMouseEmailButtonOut(){
+        setIsMouseOnEmailButton(false)
     }
-    const inputCss = {
-        width:"250px",
-        height:"50px",
-        border:"solid",
-        borderRadius:"30px",
-        borderColor:"#ff3363",
-        fontSize:"20px",
-        padding:"2px 2px 2px 20px",
-        margin:"0 5px 0 0 "
-    }
-    const buttonCss = {
-        cursor:"pointer",
-        width:"100px",
-        height:"60px",
-        border:"solid",
-        borderRadius:"15px",
-        background:"#ff3363",
-        color:"#ff3363",
-        textAlign:"center",
-    }
-
 
     return (
         <div>
@@ -96,7 +113,7 @@ export default function Home() {
             <div style={{display:"flex"}}>
                 <div style={{display:"flex", margin:"auto"}}>
                     <input type="email" placeholder="이메일을 입력하세요!" style={inputCss} onChange={handleEmailChange}/>  
-                    <button style={buttonCss} onClick={isUserEmail?handleEmailSubmitTrue:handleEmailSubmitFalse}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
+                    <button style={isMouseOnEmailButton?buttonCss01:buttonCss02} onClick={isUserEmail?handleEmailSubmitTrue:handleEmailSubmitFalse} onMouseOver={handleOnMouseEmailButtonOver} onMouseOut={handleOnMouseEmailButtonOut}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
                 </div>
             </div>
             

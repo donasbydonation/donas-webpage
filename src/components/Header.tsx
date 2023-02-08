@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { useEffect, useState } from 'react';
 
 export default function Header(){
+    const [isMouse01On, setIsMouse01On] = useState(false)
+    const [isMouse02On, setIsMouse02On] = useState(false)
+
     const header = {
         position:"fixed",
         display:"flex",
@@ -11,8 +15,18 @@ export default function Header(){
         width:"100%", 
         height:"60px"
     }
-
-    const button = {
+    const buttonCss01 = {
+        cursor:"pointer",
+        width:"100px",
+        height:"60px",
+        textAlign:"center",
+        background:"#EEEEEE",
+        fontSize:"18px",
+        fontWeight:"bold",
+        backgroundColor:"#fffff",
+        border: "2px ",
+    }
+    const buttonCss02 = {
         cursor:"pointer",
         width:"100px",
         height:"60px",
@@ -24,7 +38,20 @@ export default function Header(){
         border: "2px ",
     }
 
-    
+
+    function handleOnMouse01Over(){
+        setIsMouse01On(true)
+    }
+    function handleOnMouse02Over(){
+        setIsMouse02On(true)
+    }
+    function handleOnMouse01Out(){
+        setIsMouse01On(false)
+    }
+    function handleOnMouse02Out(){
+        setIsMouse02On(false)
+    }
+
     return (
         <div style={header}>
             <div style={{width:"15%"}}></div>
@@ -32,13 +59,17 @@ export default function Header(){
             
             <div style={{width:"60%"}}></div>
             
+            <div>
             <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
-                <button style={button}>공지사항</button>
+                <button style={isMouse01On?buttonCss01:buttonCss02} onMouseOver={handleOnMouse01Over} onMouseOut={handleOnMouse01Out}>공지사항</button>
             </Link>
+            </div>
 
-            <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
-                <button style={button}>고객센터</button>
-            </Link>
+            <div>
+                <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
+                    <button style={isMouse02On?buttonCss01:buttonCss02} onMouseOver={handleOnMouse02Over} onMouseOut={handleOnMouse02Out}>고객센터</button>
+                </Link>
+            </div>
             <div style={{width:"15%"}}></div>
         </div>
     );
