@@ -60,13 +60,13 @@ export default function Header(){
             <div style={{width:"60%"}}></div>
             
             <div>
-            <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
+            <Link href="https://soulcalmfunny.notion.site/0265c96352964f298b9e600bcbbd8e9b">
                 <button style={isMouse01On?buttonCss01:buttonCss02} onMouseOver={handleOnMouse01Over} onMouseOut={handleOnMouse01Out}>공지사항</button>
             </Link>
             </div>
 
             <div>
-                <Link href="https://www.notion.so/soulcalmfunny/Boost-Story-dec916b180a84907b6930bcfb9e379ac">
+                <Link href="https://soulcalmfunny.notion.site/6c9c74f386e54f42b5763d4b74b672ce">
                     <button style={isMouse02On?buttonCss01:buttonCss02} onMouseOver={handleOnMouse02Over} onMouseOut={handleOnMouse02Out}>고객센터</button>
                 </Link>
             </div>
