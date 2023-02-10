@@ -134,7 +134,7 @@ export default function Signup() {
             );
         }
         else {
-            return 
+            return null
         }
     }
 
