@@ -9,15 +9,20 @@ export default function Home() {
     const [isUserEmail, setIsUserEmail] = useState(false)
     const [isMouseOnEmailButton, setIsMouseOnEmailButton] = useState(false)
 
+    
     const imageMargin: CSS.Properties = {
         width:"0%",
     }
+
+
     const imageWidth: CSS.Properties = {
         width:"1200px",
         height:"100%",
         overflow:"hidden",
         margin:"auto",
     }
+
+
     const inputCss: CSS.Properties = {
         width:"250px",
         height:"50px",
@@ -28,6 +33,8 @@ export default function Home() {
         padding:"2px 2px 2px 20px",
         margin:"0 5px 0 0 "
     }
+
+
     const buttonCss01: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
@@ -38,6 +45,8 @@ export default function Home() {
         color:"#ff3363",
         textAlign:"center",
     }
+
+
     const buttonCss02: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
@@ -69,9 +78,11 @@ export default function Home() {
         }
     })
 
+
     function handleEmailSubmitFalse(){
         alert('잘못된 형식의 이메일입니다.')   
     }
+
 
     function handleEmailSubmitTrue(){
         axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
@@ -90,9 +101,12 @@ export default function Home() {
     function handleOnMouseEmailButtonOver(){
         setIsMouseOnEmailButton(true)
     }
+
+
     function handleOnMouseEmailButtonOut(){
         setIsMouseOnEmailButton(false)
     }
+
 
     return (
         <div>
