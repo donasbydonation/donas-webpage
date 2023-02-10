@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import styles from '@/styles/auth/signup.module.css'
 
 export default function Signup() {
@@ -26,7 +26,7 @@ export default function Signup() {
    
 
     // onChange Method
-    const handleIdChange = (e) => {
+    const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
         setId(e.target.value);
         setIsCheckDuplication(false)
     };
@@ -46,7 +46,7 @@ export default function Signup() {
     })
     
 
-    const handlePw1Change = (e) => {
+    const handlePw1Change = (e: ChangeEvent<HTMLInputElement>) => {
         setPw1(e.target.value);
     };
     useEffect(() =>{
@@ -64,7 +64,7 @@ export default function Signup() {
     })
 
     
-    const handlePw2Change = (e) => {
+    const handlePw2Change = (e: ChangeEvent<HTMLInputElement>) => {
         setPw2(e.target.value);
     };
     useEffect(() =>{
@@ -81,7 +81,7 @@ export default function Signup() {
     })
     
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     };
     useEffect(() =>{
@@ -90,7 +90,7 @@ export default function Signup() {
     })
     
 
-    const handleAuthcodeChange = (e) => {
+    const handleAuthcodeChange = (e: ChangeEvent<HTMLInputElement>) => {
         setAuthcode(e.target.value);
     };
     useEffect(() =>{
@@ -134,7 +134,7 @@ export default function Signup() {
             );
         }
         else {
-            return 
+            return null
         }
     }
 
