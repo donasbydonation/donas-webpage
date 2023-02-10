@@ -68,11 +68,11 @@ export default function Home() {
         }
     })
 
-    function handleEmailSubmitFalse(e){
+    function handleEmailSubmitFalse(){
         alert('잘못된 형식의 이메일입니다.')   
     }
 
-    function handleEmailSubmitTrue(e){
+    function handleEmailSubmitTrue(){
         axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
         .then(res => {
             const status = res.status

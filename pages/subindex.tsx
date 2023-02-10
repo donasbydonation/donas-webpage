@@ -16,7 +16,7 @@ export default function Home() {
         console.log(email)
     })
 
-    function handleEmailSubmit(e){
+    function handleEmailSubmit(){
         axios.post('/api/todos', {email: ""})
         .then(res => {
           console.log(res);
