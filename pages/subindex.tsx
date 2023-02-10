@@ -2,13 +2,13 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/index.module.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import axios from 'axios'
 
 export default function Home() {
     const [email, setEmail] = useState('')
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
     };
     useEffect(() =>{
@@ -16,7 +16,7 @@ export default function Home() {
         console.log(email)
     })
 
-    function handleEmailSubmit(e){
+    function handleEmailSubmit(){
         axios.post('/api/todos', {email: ""})
         .then(res => {
           console.log(res);
@@ -50,7 +50,7 @@ export default function Home() {
                         <div><span className={styles.subtext}>후원받고 성장해보세요!</span></div>
                     </div>
                     <div className={styles.iconbox}>
-                        <img src="images/fire/fire.png" srcset="images/fire/fire@2x.png 2x, images/fire/fire@3x.png 3x" className={styles.icon}></img>
+                        <img src="images/fire/fire.png" srcSet="images/fire/fire@2x.png 2x, images/fire/fire@3x.png 3x" className={styles.icon}></img>
                     </div>
                 </div>
 
@@ -66,13 +66,13 @@ export default function Home() {
                         <div><span className={styles.subtext}>성장의 기쁨을 응원하세요!</span></div>
                     </div>
                     <div className={styles.iconbox}>
-                        <img src="images/gift/gift.png" srcset="images/gift/gift@2x.png 2x, images/gift/gift@3x.png 3x" className={styles.icon}></img>
+                        <img src="images/gift/gift.png" srcSet="images/gift/gift@2x.png 2x, images/gift/gift@3x.png 3x" className={styles.icon}></img>
                     </div>
                 </div>
             </div>
 
             <div style={{position: "absolute"}}>
-                <img src="images/orbit/orbit.png" srcset="images/orbit/orbit@2x.png 2x, images/orbit/orbit@3x.png 3x" className={styles.orbit}></img>        
+                <img src="images/orbit/orbit.png" srcSet="images/orbit/orbit@2x.png 2x, images/orbit/orbit@3x.png 3x" className={styles.orbit}></img>        
             </div>
         </div>
     );
