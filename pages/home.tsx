@@ -26,6 +26,9 @@ function Summary(){
 
 export default function LoginHome(){
     return (
+        <div>서비스 준비 중 입니다.</div>
+    );
+    return (
         <div>
             홈입니다.
             <Profile></Profile>

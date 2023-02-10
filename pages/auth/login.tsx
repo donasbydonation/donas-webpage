@@ -3,6 +3,9 @@ import styles from '@/styles/auth/login.module.css'
 
 export default function Login(){
     return (
+        <div>서비스 준비 중 입니다.</div>
+    );
+    return (
         <div className={styles.box}>
             <div style={{display:"flex"}}>
                 <div className={styles.sidebox_pink}></div>

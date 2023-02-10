@@ -23,6 +23,10 @@ export default function Home() {
         })
     }
 
+    
+    return (
+        <div>서비스 준비 중 입니다.</div>
+    );
     return (
         <div style={{position: "relative"}}>
             <span className={styles.intro}>좋아하는 크리에이터가 있으신가요?</span>
