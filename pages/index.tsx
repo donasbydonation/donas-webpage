@@ -9,7 +9,6 @@ export default function Home() {
     const [isUserEmail, setIsUserEmail] = useState(false)
     const [isMouseOnEmailButton, setIsMouseOnEmailButton] = useState(false)
 
-
     const imageMargin: CSS.Properties = {
         width:"0%",
     }
@@ -77,7 +76,6 @@ export default function Home() {
             console.log(userEmail)
         }
     })
-
 
     function handleEmailSubmit(e: FormEvent<HTMLFormElement>){
         e.preventDefault()

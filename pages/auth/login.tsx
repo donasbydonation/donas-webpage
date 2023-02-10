@@ -1,39 +1,73 @@
 import Link from "next/link";
-import styles from '@/styles/auth/login.module.css'
-import { useEffect, useState } from "react";
+import styles from '@/styles/auth/login.module.css';
+import { useEffect, useState, ChangeEvent } from "react";
+import { useRouter } from "next/router";
+import { Cookies } from "react-cookie";
+import axios from 'axios'
+
+
+const cookies = new Cookies();
+
+
+export const setCookie = (name: string, value: string, option?: any) => {
+    return cookies.set(name, value, { ...option})
+}
+
+
+export const getCookie = (name: string) => {
+    return cookies.get(name)
+}
+
 
 export default function Login(){
-    const [id, setId] = useState('')
-    const [pw, setPw] = useState('')
+    const router = useRouter();
 
-    const [isId, setIsId] = useState(false)
-    const [isPw, setIsPw] = useState(false)
+    const [userId, setUserId] = useState('')
+    const [userPw, setUserPw] = useState('')
+
+    const [isUserId, setIsUserId] = useState(false)
+    const [isUserPw, setIsUserPw] = useState(false)
+
 
     // onChange Method
-    const handleIdChange = (e) => {
-        setId(e.target.value);
+    const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setUserId(e.target.value);
     };
     useEffect(() =>{
-        if (id.length > 0){
-            setId((currentValue) => currentValue);
-            console.log(id)
+        if (userId.length > 0){
+            setUserId((currentValue) => currentValue);
+            console.log(userId)
         }
     })
     
 
-    const handlePwChange = (e) => {
-        setPw(e.target.value);
+    const handlePwChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setUserPw(e.target.value);
     };
     useEffect(() =>{
-        if (pw.length > 0){
-            setPw((currentValue) => currentValue);
-            console.log(pw)
+        if (userPw.length > 0){
+            setUserPw((currentValue) => currentValue);
+            console.log(userPw)
         }
     })
     
 
     function handleOnSubmit(){
-        console.log('dk');
+        axios.post('http://', {id:userId, pw:userPw})
+        .then(res => {
+            const status = res.status
+            if (status === 201){
+                const [accessToken] = res.data;
+                cookies.set("LoginToken", accessToken, {
+                    path: "/",
+                    secure: true,
+                    sameSite: "none",
+                });                
+                router.replace("/home");
+            }
+        }).catch(ex=>{
+            alert('아이디 또는 비밀번호를 확인해주세요.')
+        })
     }
 
 
@@ -44,10 +78,10 @@ export default function Login(){
                 <span className={styles.span}>로그인</span>
             </div>
 
-            <form style={{display:"flex"}} className={styles.input}>       
+            <form style={{display:"flex"}} className={styles.input} onSubmit={handleOnSubmit} method='POST'>       
                 <div>
-                    <div><input type="text" placeholder="id" name="id" value={id} onChange={handleIdChange}></input></div>
-                    <div><input type="password" placeholder="password" name="pw" value={pw} onChange={handlePwChange}></input></div>
+                    <div><input type="text" placeholder="id" name="id" value={userId} onChange={handleIdChange}></input></div>
+                    <div><input type="password" placeholder="password" name="pw" value={userPw} onChange={handlePwChange}></input></div>
                 </div>
                 <button type="submit">login</button>
             </form>
