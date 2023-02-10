@@ -1,11 +1,12 @@
 import Link from "next/link";
 import { useEffect, useState } from 'react';
+import CSS from 'csstype';
 
 export default function Header(){
     const [isMouse01On, setIsMouse01On] = useState(false)
     const [isMouse02On, setIsMouse02On] = useState(false)
 
-    const header = {
+    const header: CSS.Properties = {
         position:"fixed",
         display:"flex",
         margin:"auto",
@@ -15,7 +16,7 @@ export default function Header(){
         width:"100%", 
         height:"60px"
     }
-    const buttonCss01 = {
+    const buttonCss01: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
         height:"60px",
@@ -26,7 +27,7 @@ export default function Header(){
         backgroundColor:"#fffff",
         border: "2px ",
     }
-    const buttonCss02 = {
+    const buttonCss02: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
         height:"60px",

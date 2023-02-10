@@ -1,6 +1,7 @@
 import Header from "../src/components/Header"
 import { useEffect, useState, ChangeEvent } from 'react';
 import axios from 'axios'
+import CSS from 'csstype'
 
 export default function Home() {
     const imagePath = '/images/donasRendingImages1200'
@@ -8,16 +9,16 @@ export default function Home() {
     const [isUserEmail, setIsUserEmail] = useState(false)
     const [isMouseOnEmailButton, setIsMouseOnEmailButton] = useState(false)
 
-    const imageMargin = {
+    const imageMargin: CSS.Properties = {
         width:"0%",
     }
-    const imageWidth = {
+    const imageWidth: CSS.Properties = {
         width:"1200px",
         height:"100%",
         overflow:"hidden",
         margin:"auto",
     }
-    const inputCss = {
+    const inputCss: CSS.Properties = {
         width:"250px",
         height:"50px",
         border:"solid",
@@ -27,7 +28,7 @@ export default function Home() {
         padding:"2px 2px 2px 20px",
         margin:"0 5px 0 0 "
     }
-    const buttonCss01 = {
+    const buttonCss01: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
         height:"60px",
@@ -37,7 +38,7 @@ export default function Home() {
         color:"#ff3363",
         textAlign:"center",
     }
-    const buttonCss02 = {
+    const buttonCss02: CSS.Properties = {
         cursor:"pointer",
         width:"100px",
         height:"60px",
