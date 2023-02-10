@@ -140,9 +140,6 @@ export default function Signup() {
 
     
     return (
-        <div>서비스 준비 중 입니다.</div>
-    );
-    return (
       <div>
           <div className={styles.box}>
               <div style={{display:"flex"}}>
