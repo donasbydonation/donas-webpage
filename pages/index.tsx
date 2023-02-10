@@ -1,5 +1,5 @@
 import Header from "../src/components/Header"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import axios from 'axios'
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
     }
 
 
-    const handleEmailChange = (e) => {
+    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
         setUserEmail(e.target.value);
     };
     useEffect(() =>{
