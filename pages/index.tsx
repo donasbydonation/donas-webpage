@@ -85,7 +85,7 @@ export default function Home() {
 
 
     function handleEmailSubmitTrue(){
-        axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
+        axios.post('/api/v1/pre-registrations', {email:userEmail})
         .then(res => {
             const status = res.status
             console.log(res.status)
