@@ -1,5 +1,5 @@
 import Header from "../src/components/Header"
-import { useEffect, useState, ChangeEvent } from 'react';
+import { useEffect, useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios'
 import CSS from 'csstype'
 
@@ -79,23 +79,25 @@ export default function Home() {
     })
 
 
-    function handleEmailSubmitFalse(){
-        alert('잘못된 형식의 이메일입니다.')   
-    }
+    function handleEmailSubmit(e: FormEvent<HTMLFormElement>){
+        e.preventDefault()
 
-
-    function handleEmailSubmitTrue(){
-        axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
-        .then(res => {
-            const status = res.status
-            console.log(res.status)
-            if (status === 201){
-                alert('등록되었습니다.!')   
-                setUserEmail('')
-            }
-        }).catch(ex=>{
-            alert('중복된 이메일입니다.')
-        })
+        if (isUserEmail) {
+            console.log(e);
+            axios.post('https://donas.me/api/v1/pre-registrations', {email:userEmail})
+            .then(res => {
+                const status = res.status
+                console.log(res.status)
+                if (status === 201){
+                    alert('등록되었습니다.!')   
+                    setUserEmail('')
+                }
+            }).catch(ex=>{
+                alert('중복된 이메일입니다.')
+            })
+        } else {
+            alert('잘못된 형식의 이메일입니다.')   
+        }
     }
 
 
@@ -127,7 +129,7 @@ export default function Home() {
             </div>
 
             {/* 이메일 등록 */}
-            <form style={{display:"flex"}} onSubmit={isUserEmail?handleEmailSubmitTrue:handleEmailSubmitFalse} method='POST'>
+            <form style={{display:"flex"}} onSubmit={handleEmailSubmit} method='POST'>
                 <div style={{display:"flex", margin:"auto"}}>
                     <input type="email" placeholder="이메일을 입력하세요!" name="email" value={userEmail} style={inputCss} onChange={handleEmailChange}/>  
                     <button type="submit" style={isMouseOnEmailButton?buttonCss01:buttonCss02} onMouseOver={handleOnMouseEmailButtonOver} onMouseOut={handleOnMouseEmailButtonOut}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
