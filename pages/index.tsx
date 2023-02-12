@@ -88,6 +88,7 @@ export default function Home() {
         axios.post('http://localhost:8080/api/v1/pre-registrations', {email:userEmail})
         .then(res => {
             const status = res.status
+            console.log(res.status)
             if (status === 201){
                 alert('등록되었습니다.!')   
                 setUserEmail('')
@@ -124,13 +125,14 @@ export default function Home() {
                 <img src= {imagePath + "/rending02.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
+
             {/* 이메일 등록 */}
-            <div style={{display:"flex"}}>
+            <form style={{display:"flex"}} onSubmit={isUserEmail?handleEmailSubmitTrue:handleEmailSubmitFalse} method='POST'>
                 <div style={{display:"flex", margin:"auto"}}>
-                    <input type="email" placeholder="이메일을 입력하세요!" style={inputCss} onChange={handleEmailChange}/>  
-                    <button style={isMouseOnEmailButton?buttonCss01:buttonCss02} onClick={isUserEmail?handleEmailSubmitTrue:handleEmailSubmitFalse} onMouseOver={handleOnMouseEmailButtonOver} onMouseOut={handleOnMouseEmailButtonOut}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
+                    <input type="email" placeholder="이메일을 입력하세요!" name="email" value={userEmail} style={inputCss} onChange={handleEmailChange}/>  
+                    <button type="submit" style={isMouseOnEmailButton?buttonCss01:buttonCss02} onMouseOver={handleOnMouseEmailButtonOver} onMouseOut={handleOnMouseEmailButtonOut}><span style={{color:"white", fontSize:"20px", fontWeight:"bold"}}>등록하기</span></button>
                 </div>
-            </div>
+            </form>
             
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
