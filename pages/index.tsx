@@ -19,7 +19,7 @@ export default function Home() {
         width:"1200px",
         height:"100%",
         overflow:"hidden",
-        margin:"auto",
+        margin:"auto"
     }
 
 
@@ -114,10 +114,10 @@ export default function Home() {
     return (
         <div>
             <Header />
-            <div style={{padding:"10px"}}></div>
+            <div style={{padding:"25px"}}></div>
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
-                <img src= {imagePath + "/rending01.jpg"} alt="" style={imageWidth}/>
+                <img src= {imagePath + "/rending01.jpg"} alt="" style={imageWidth} />
                 <div style={imageMargin}></div>           
             </div>
 
