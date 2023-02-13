@@ -9,7 +9,7 @@ export default function Document() {
         <meta name="description" content="세계 최초의 수익 공유형 SNS" />
         <title>도나스 | Donas</title>
       </Head>
-      <body>
+      <body style={{margin:"4px"}}>
         <Main />
         <NextScript />
       </body>

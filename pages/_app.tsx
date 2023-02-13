@@ -4,6 +4,8 @@ import Footer from "../src/components/Footer"
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-      <Component {...pageProps} />
+    <div style={{padding:"0px", margin:"0px"}}>      
+      <Component {...pageProps}/>
+    </div>
   );
 }
