@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from '@/styles/auth/login.module.css';
-import { useEffect, useState, ChangeEvent } from "react";
+import { useEffect, useState, ChangeEvent, FormEvent} from "react";
 import { useRouter } from "next/router";
 import { Cookies } from "react-cookie";
 import axios from 'axios'
@@ -21,6 +21,8 @@ export const getCookie = (name: string) => {
 
 export default function Login(){
     const router = useRouter();
+    const accessTokenExpires = new Date();
+    const refreshTokenExpires = new Date();
 
     const [userId, setUserId] = useState('')
     const [userPw, setUserPw] = useState('')
@@ -52,18 +54,47 @@ export default function Login(){
     })
     
 
-    function handleOnSubmit(){
-        axios.post('http://', {id:userId, pw:userPw})
+    function handleOnSubmit(e: FormEvent<HTMLFormElement>){
+        e.preventDefault();
+
+        axios.post('http://localhost:8080/api/v1/login', {username:userId, password:userPw})
         .then(res => {
             const status = res.status
-            if (status === 201){
-                const [accessToken] = res.data;
-                cookies.set("LoginToken", accessToken, {
+            if (status === 200){
+                const [accessToken] = res.data.accessToken;
+                const [refreshToken] = res.data.refreshToken;
+                accessTokenExpires.setFullYear(accessTokenExpires.getFullYear() + 1);
+                refreshTokenExpires.setFullYear(refreshTokenExpires.getFullYear() + 10);
+                cookies.set("AccessToken", accessToken, {
                     path: "/",
                     secure: true,
                     sameSite: "none",
+                    expires:accessTokenExpires
+                });
+                cookies.set("RefreshToken", refreshToken, {
+                    path: "/",
+                    secure: true,
+                    sameSite: "none",
+                    expires:refreshTokenExpires
                 });                
                 router.replace("/home");
+            }
+        }).catch(ex=>{
+            alert('아이디 또는 비밀번호를 확인해주세요.')
+        })
+    }
+
+
+    function handleOnSubmitNextAPI(e: FormEvent<HTMLFormElement>){
+        e.preventDefault()
+
+        axios.post('http://localhost:3000/api/login', {username:userId, password:userPw})
+        .then(res => {
+            const status = res.status
+            console.log(status)
+            console.log(res.data)
+            if (status === 200){
+                console.log(res.data)
             }
         }).catch(ex=>{
             alert('아이디 또는 비밀번호를 확인해주세요.')
