@@ -12,7 +12,7 @@ export default function Header(){
         margin:"auto",
         top:0,
         left:0,
-        background:"#E6E6E6",
+        background:"#F9F9F9",
         width:"100%", 
         height:"60px"
     }
@@ -32,7 +32,7 @@ export default function Header(){
         width:"100px",
         height:"60px",
         textAlign:"center",
-        background:"#E6E6E6",
+        background:"#F9F9F9",
         fontSize:"18px",
         fontWeight:"bold",
         backgroundColor:"#fffff",
