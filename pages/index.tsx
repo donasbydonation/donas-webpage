@@ -153,7 +153,13 @@ export default function Home() {
                 <img src= {imagePath + "/rending05.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
-            
+
+            <div style={{display:"flex"}}>
+                <div style={imageMargin}></div>
+                <img src= {imagePath + "/rending06.jpg"} alt="" style={imageWidth}/>
+                <div style={imageMargin}></div>           
+            </div>
+
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
                 <img src= {imagePath + "/rending07.jpg"} alt="" style={imageWidth}/>
