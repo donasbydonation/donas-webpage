@@ -6,8 +6,8 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-      {/* Google tag (gtag.js) --> */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FK2F5BW3NX"></script>
+        {/* Google tag (gtag.js) --> */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FK2F5BW3NX" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
