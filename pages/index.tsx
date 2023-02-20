@@ -4,7 +4,7 @@ import axios from 'axios'
 import CSS from 'csstype'
 
 export default function Home() {
-    const imagePath = '/images/donasRendingImages1200'
+    const imagePath = '/images/donasRendingImages1200ver2'
     const [userEmail, setUserEmail] = useState('')
     const [isUserEmail, setIsUserEmail] = useState(false)
     const [isMouseOnEmailButton, setIsMouseOnEmailButton] = useState(false)
@@ -153,7 +153,13 @@ export default function Home() {
                 <img src= {imagePath + "/rending05.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
-            
+
+            <div style={{display:"flex"}}>
+                <div style={imageMargin}></div>
+                <img src= {imagePath + "/rending06.jpg"} alt="" style={imageWidth}/>
+                <div style={imageMargin}></div>           
+            </div>
+
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
                 <img src= {imagePath + "/rending07.jpg"} alt="" style={imageWidth}/>
@@ -168,7 +174,7 @@ export default function Home() {
             
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
-                <img src="/images/donasRendingImages/rending09.jpg" alt="" style={imageWidth}/>
+                <img src={imagePath + "/rending09.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
         </div>
