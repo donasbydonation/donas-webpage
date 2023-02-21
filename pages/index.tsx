@@ -122,7 +122,7 @@ export default function Home() {
             </div>
 
 
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", background: "linear-gradient(#F8F8F8 40%, white)"}}>
                 <div style={imageMargin}></div>
                 <img src= {imagePath + "/rending02.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
@@ -142,7 +142,7 @@ export default function Home() {
                 <div style={imageMargin}></div>           
             </div>
             
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", backgroundColor:"#F8F8F8"}}>
                 <div style={imageMargin}></div>
                 <img src= {imagePath + "/rending04.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
@@ -154,7 +154,7 @@ export default function Home() {
                 <div style={imageMargin}></div>           
             </div>
 
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex", backgroundColor:"#FF3363"}}>
                 <div style={imageMargin}></div>
                 <img src= {imagePath + "/rending06.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
@@ -174,7 +174,7 @@ export default function Home() {
             
             <div style={{display:"flex"}}>
                 <div style={imageMargin}></div>
-                <img src={imagePath + "/rending09.jpg"} alt="" style={imageWidth}/>
+                <img src={imagePath + "/rendingbackground09.jpg"} alt="" style={{width:"100%", height:"100%", overflow:"hidden", margin:"auto"}}/>
                 <div style={imageMargin}></div>           
             </div>
         </div>
