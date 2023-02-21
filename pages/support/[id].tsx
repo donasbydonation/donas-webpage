@@ -2,14 +2,14 @@ import { useRouter } from "next/router"
 
 export default function Send(){
     const router = useRouter();
-    const {id} = router.query
+    const {id} = router.query;
 
     function Holding(){
         return (
             <div>
                 후원대상 영역입니다.
             </div>
-        )
+        );
     }
     
     return (
