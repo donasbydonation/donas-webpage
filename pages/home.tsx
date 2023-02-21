@@ -1,12 +1,5 @@
 import BottomBar from "@/src/components/BottomBar";
 
-function Profile(){
-    return (
-        <div>
-            프로필 영역입니다.
-        </div>
-    );
-}
 
 function Holding(){
     return (
@@ -16,6 +9,16 @@ function Holding(){
     )
 }
 
+
+function Recent(){
+    return (
+        <div>
+            최근 후원한 사람 영역입니다.
+        </div>
+    );
+}
+
+
 function Summary(){
     return (
         <div>
@@ -24,17 +27,25 @@ function Summary(){
     )
 }
 
-export default function LoginHome(){
-    return (
-        <div>서비스 준비 중 입니다.</div>
-    );
+
+function CreaterGrowth(){
     return (
         <div>
-            홈입니다.
-            <Profile></Profile>
-            <Holding></Holding>
-            <Summary></Summary>
-            <BottomBar></BottomBar>
+            크리에이터 성장지표 영역입니다.
+        </div>
+    );
+}
+
+
+export default function LoginHome(){
+    return (
+        <div style={{display:"flex"}}>
+            <div style={{margin:"auto"}}><h1>내 크리에이터가 얼마나 성장했는지 볼 수 있어야한다.</h1> <h1>ex) 000님의 후원자 수가 이만큼 증가했어요!</h1></div>
+            <div style={{margin:"auto"}}>
+                <Holding />
+                <Recent />
+                <Summary />
+            </div>
         </div>
     );
 }
