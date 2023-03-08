@@ -23,6 +23,7 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* Donas metadata */}
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <meta name="facebook-domain-verification" content="cz09jdmd69u1rmne7jwmlcfyajovf9" />
         <meta name="description" content="세계 최초의 수익 공유형 SNS" />
         <title>도나스 | Donas</title>
       </Head>
