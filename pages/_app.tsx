@@ -11,9 +11,17 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* @see https://nextjs.org/docs/messages/no-title-in-document-head */}
         <title>도나스 | Donas</title>
       </Head>
+      {/* TODO: Use sementic tags
+        <nav>
+        </nav>
+      */}
       <main>
         <Component {...pageProps}/>
       </main>
+      {/* TODO: Use sementic tags
+        <footer>
+        </footer>
+      */}
     </>
   );
 }
