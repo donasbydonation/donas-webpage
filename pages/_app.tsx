@@ -5,13 +5,15 @@ import 'styles/reset-defaults.css'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      {/* Append to `_document.tsx`'s head tag */}
       <Head>
-        {/* Append to `_document.tsx`'s head tag */}
         {/* Title tag must be placed in _app.tsx */}
         {/* @see https://nextjs.org/docs/messages/no-title-in-document-head */}
         <title>도나스 | Donas</title>
       </Head>
-      <Component {...pageProps}/>
+      <main>
+        <Component {...pageProps}/>
+      </main>
     </>
   );
 }
