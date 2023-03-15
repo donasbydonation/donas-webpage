@@ -37,3 +37,6 @@ next-env.d.ts
 
 # VIM
 *.swp
+
+# MacOS
+.DS_Store
