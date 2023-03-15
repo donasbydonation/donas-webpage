@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import 'styles/reset-defaults.css'
+import GlobalNav from '@/ui/global-nav'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,17 +12,12 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* @see https://nextjs.org/docs/messages/no-title-in-document-head */}
         <title>도나스 | Donas</title>
       </Head>
-      {/* TODO: Use sementic tags
-        <nav>
-        </nav>
-      */}
+      <GlobalNav />
       <main>
         <Component {...pageProps}/>
       </main>
-      {/* TODO: Use sementic tags
-        <footer>
-        </footer>
-      */}
+      <footer>
+      </footer>
     </>
   );
 }
