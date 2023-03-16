@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import 'styles/reset-defaults.css'
 import GlobalNav from '@/ui/global-nav'
+import Footer from '@/ui/footer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,8 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <main>
         <Component {...pageProps}/>
       </main>
-      <footer>
-      </footer>
+      <Footer />
     </>
   );
 }

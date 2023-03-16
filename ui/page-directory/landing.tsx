@@ -174,12 +174,6 @@ export default function Landing() {
                 <img src= {imagePath + "/08.jpg"} alt="" style={imageWidth}/>
                 <div style={imageMargin}></div>           
             </div>
-            
-            <div style={{display:"flex"}}>
-                <div style={imageMargin}></div>
-                <img src={imagePath + "/background09.jpg"} alt="" style={{width:"100%", height:"100%", overflow:"hidden", margin:"auto"}}/>
-                <div style={imageMargin}></div>           
-            </div>
         </div>
     );
 }
