@@ -1,3 +1,8 @@
+/**
+ * DISCLAIMER
+ * This page is no longer maintained since Mar 15, 2023
+ * And will be deleted after official home page is released
+ */
 import { useRouter } from "next/router"
 
 export default function Send(){

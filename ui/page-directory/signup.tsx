@@ -1,3 +1,8 @@
+/**
+ * DISCLAIMER
+ * This page is no longer maintained since Mar 15, 2023
+ * And will be deleted after official home page is released
+ */
 import { useEffect, useState, ChangeEvent } from 'react';
 import styles from '@/styles/auth/signup.module.css'
 import axios from 'axios'
