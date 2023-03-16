@@ -3,9 +3,6 @@
  * This page is no longer maintained since Mar 15, 2023
  * And will be deleted after official home page is released
  */
-import BottomBar from "@/src/components/BottomBar";
-
-
 function Holding(){
     return (
         <div>
