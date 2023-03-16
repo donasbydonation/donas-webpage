@@ -1,3 +1,8 @@
+/**
+ * DISCLAIMER
+ * This page is no longer maintained since Mar 15, 2023
+ * And will be deleted after official home page is released
+ */
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
