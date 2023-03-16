@@ -37,6 +37,26 @@ export default function GlobalNav(){
                 <StyledLink href="https://soulcalmfunny.notion.site/6c9c74f386e54f42b5763d4b74b672ce">
                     고객센터
                 </StyledLink>
+                {/* TODO: Refactoring required - Link element below is moved from `/src/components/Top.tsx` */}
+                {/*
+                <Link href="/auth/login">
+                    <button style={{
+                                    cursor:"pointer",
+                                    width:"110px",
+                                    height:"45px",
+                                    textAlign:"center",
+                                    background:"white",
+                                    borderRadius:"30px",
+                                    fontSize:"18px",
+                                    fontWeight:"bold",
+                                    backgroundColor:"#fffff",
+                                    border: "2px solid #ff3363",
+                                    color:"#ff3363"
+                                    }}>
+                            로그인
+                    </button>
+                </Link>
+                */}
             </div>
         </StyledNav>
     )
