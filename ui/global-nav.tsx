@@ -4,6 +4,7 @@ import Header from '@/ui/header'
 
 const StyledNav = styled.nav`
     position: fixed;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: space-between;
