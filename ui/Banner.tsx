@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
-export default function Banner() {
-    const Container = styled.div`
-        grid-area: banner;
-        border: 1px dotted gray;
-    `;
+const StyledImg = styled.img`
+    grid-area: banner;
+    width: 100%;
+`;
 
+export default function Banner() {
     return (
-        <Container>
-        Banner
-        </Container>
+        <StyledImg src="/images/home/banner.png" alt="Donas banner image" />
     );
 }
