@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 const CopyrightContainer = styled.div`
-    color: white;
-    font-size: 10px;
-    background-color: #ff3363;
-`
+    color: black;
+    font-size: 15px;
+    background-color: #FFFFFF;
+`;
 
-export default function Footer(){
-return (
+export default function Footer() {
+    return (
         <div>
-            <img src={"/images/landing/background09.jpg"} alt="footer-image" />
             <CopyrightContainer>
                 © {new Date().getFullYear()} Donas. All rights reserved.
             </CopyrightContainer>
