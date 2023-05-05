@@ -12,9 +12,9 @@ const Container = styled.div`
 `;
 
 const StyledDatePicker = styled(Link)`
-    margin-right: 6px;
+    margin-right: 20px;
     cursor: pointer;
-    color:  black;
+    color:  #666666;
     text-decoration: none;
 
     &:hover{
