@@ -5,7 +5,6 @@ import AsideItem from './AsideItem';
 
 const AsideContainer = styled.aside`
     grid-area: aside;
-    border: 1px dotted gray;
     > * {
         & {
             height: 55px;
