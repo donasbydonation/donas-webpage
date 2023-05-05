@@ -1,0 +1,8 @@
+services:
+  donas-webpage:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    image: ghcr.io/donasbydonation/front-end:local
+    ports:
+      - "23000:3000"
