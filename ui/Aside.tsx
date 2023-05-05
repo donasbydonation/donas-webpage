@@ -3,51 +3,52 @@ import { Search } from 'react-bootstrap-icons';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import AsideItem from './AsideItem';
 
-export default function Aside({ creatorInfos }: CreatorInfo[]) {
-    const AsideGroup = styled.aside`
-        grid-area: aside;
-        border: 1px dotted gray;
-        > * {
-            & {
-                height: 55px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 10px 18px;
-            }
+const AsideContainer = styled.aside`
+    grid-area: aside;
+    border: 1px dotted gray;
+    > * {
+        & {
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 18px;
         }
-    `;
+    }
+`;
 
-    const AsideHeader = styled.div`
-        font-size: 17px;
-        font-weight: bold;
-    `;
+const AsideHeader = styled.div`
+    font-size: 17px;
+    font-weight: bold;
+`;
 
-    const Button = styled.button`
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        background: none;
-        cursor: pointer;
-    `;
+const Button = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+`;
 
+
+export default function Aside(props: { creatorInfos: CreatorInfo[]}) {
     const onClickSearch = () => {
         // TODO: search button
         console.warn("TODO");
     };
 
     return (
-        <AsideGroup>
+        <AsideContainer>
             <AsideHeader>
                 <span>크리에이터 목록</span>
                 <Button onClick={onClickSearch}>
                     <Search />
                 </Button>
             </AsideHeader>
-            {creatorInfos.map((creatorInfo, idx) => (
+            {props.creatorInfos.map((creatorInfo, idx) => (
                 <AsideItem creatorInfo={creatorInfo} key={idx} />
             ))}
-        </AsideGroup>
+        </AsideContainer>
     );
 }
