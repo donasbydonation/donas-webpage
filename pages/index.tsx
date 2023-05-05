@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
-import Title from '@/ui/Title';
+import TitleBar from '@/ui/TitleBar';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 
@@ -31,7 +31,7 @@ export default function Home(props: { creatorInfos: CreatorInfo[] }) {
         <StyledGrid>
             <Aside creatorInfos={props.creatorInfos} />
             <Banner />
-            <Title />
+            <TitleBar />
             <StyledDate>
             date
             </StyledDate>

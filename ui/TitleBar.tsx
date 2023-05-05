@@ -21,7 +21,7 @@ const DateText = styled.span`
     color: #FF3363;
 `;
 
-export default function Title() {
+export default function TitleBar() {
     const date = new Date();
     return (
         <Container>
