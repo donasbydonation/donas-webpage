@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
+import Title from '@/ui/Title';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 
@@ -13,11 +14,6 @@ const StyledGrid = styled.div`
         "aside date"    44px
         "aside main"    auto
         / 283px auto;
-`;
-
-const StyledTitle = styled.div`
-    grid-area: title;
-    border: 1px dotted gray;
 `;
 
 const StyledDate = styled.div`
@@ -35,9 +31,7 @@ export default function Home(props: { creatorInfos: CreatorInfo[] }) {
         <StyledGrid>
             <Aside creatorInfos={props.creatorInfos} />
             <Banner />
-            <StyledTitle>
-            title
-            </StyledTitle>
+            <Title />
             <StyledDate>
             date
             </StyledDate>
