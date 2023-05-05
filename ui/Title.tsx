@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     grid-area: title;
-    padding: 0px 26px;
     display: flex;
     align-items: flex-end;
 `;

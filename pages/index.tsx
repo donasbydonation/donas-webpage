@@ -9,11 +9,11 @@ const StyledGrid = styled.div`
     margin-top: 47px;
     display: grid;
     grid-template:
-        "aside banner"  auto
-        "aside title"   53px
-        "aside date"    44px
-        "aside main"    auto
-        / 283px auto;
+        "aside banner banner"  auto
+        "aside . title"   53px
+        "aside . date"    44px
+        "aside . main"    auto
+        / 283px 26px auto;
 `;
 
 const StyledDate = styled.div`
