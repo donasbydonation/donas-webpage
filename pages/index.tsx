@@ -1,4 +1,8 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Aside from '@/ui/Aside';
+import Banner from '@/ui/Banner';
+import { axios } from '@/lib/axios';
+import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 
 const StyledGrid = styled.div`
     margin-top: 47px;
@@ -7,18 +11,8 @@ const StyledGrid = styled.div`
         "aside banner"  162px
         "aside title"   53px
         "aside date"    44px
-        "aside main"    500px
-        / 15% 85%;
-`;
-
-const StyledAside = styled.aside`
-    grid-area: aside;
-    border: 1px dotted gray;
-`;
-
-const StyledBanner = styled.div`
-    grid-area: banner;
-    border: 1px dotted gray;
+        "aside main"    auto
+        / 283px auto;
 `;
 
 const StyledTitle = styled.div`
@@ -36,24 +30,30 @@ const StyledMain = styled.main`
     border: 1px dotted gray;
 `;
 
-export default function Home() {
-  return (
-    <StyledGrid>
-        <StyledAside>
-        aside
-        </StyledAside>
-        <StyledBanner>
-        banner
-        </StyledBanner>
-        <StyledTitle>
-        title
-        </StyledTitle>
-        <StyledDate>
-        date
-        </StyledDate>
-        <StyledMain>
-        main
-        </StyledMain>
-    </StyledGrid>
-  );
+export default function Home(props: { creatorInfos: CreatorInfo[] }) {
+    return (
+        <StyledGrid>
+            <Aside creatorInfos={props.creatorInfos} />
+            <Banner />
+            <StyledTitle>
+            title
+            </StyledTitle>
+            <StyledDate>
+            date
+            </StyledDate>
+            <StyledMain>
+            main
+            </StyledMain>
+        </StyledGrid>
+    );
+}
+
+export async function getServerSideProps() {
+    const creatorInfos = await axios.get(`http://localhost:3000/api/v1/creator-infos/list`);
+
+    return {
+        props: {
+            creatorInfos: creatorInfos.data,
+        },
+    };
 }
