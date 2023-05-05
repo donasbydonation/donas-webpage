@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useSearchParams } from 'next/navigation';
 
 const Container = styled.div`
     grid-area: title;
@@ -14,7 +15,7 @@ const Image = styled.img`
 
 const Text = styled.span`
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
 `;
 
 const DateText = styled.span`
@@ -23,6 +24,9 @@ const DateText = styled.span`
 
 export default function TitleBar() {
     const date = new Date();
+    const searchParams = useSearchParams();
+    date.setDate(date.getDate() + parseInt(searchParams.get("offset") || "0"))
+
     return (
         <Container>
             <Image src="/images/home/live-icon.svg" alt="Live broadcasting schedule" />
