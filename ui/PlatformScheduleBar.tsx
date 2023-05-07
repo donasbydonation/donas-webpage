@@ -6,7 +6,6 @@ import ExtendPlatformButton from './ExtendPlatformButton';
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
-    border: 1px dotted black;
 `;
 
 const Image = styled.img`

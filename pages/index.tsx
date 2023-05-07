@@ -22,7 +22,6 @@ const StyledGrid = styled.div`
 
 const StyledMain = styled.main`
     grid-area: main;
-    border: 1px dotted gray;
 `;
 
 type HomeProps = {
