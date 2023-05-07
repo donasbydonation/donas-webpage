@@ -47,7 +47,8 @@ export default function Home(props: HomeProps) {
     );
 }
 
-export async function getServerSideProps(ctx: GetServerSideProps) {
+export const getServerSideProps: GetServerSideProps<HomeProps> = async (ctx) => {
+// export async function getServerSideProps(ctx: GetServerSideProps) {
     const baseUrl = "http://localhost:3000"
     const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
 

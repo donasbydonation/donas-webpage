@@ -24,7 +24,7 @@ function Picker(props: {href: string, selected: boolean, children: ReactNode}) {
         <>
             <StyledLink
                 href={props.href}
-                style={props.selected ? {color: "#666666"} : null}
+                style={props.selected ? {color: "#666666"} : undefined}
                 scroll={false}
             >
                 {props.children}
@@ -51,7 +51,7 @@ export default function PlatformSchedulePagination(props: PlatformSchedulePagina
         [searchParams],
     );
 
-    const isSelected = useCallback((pageNum: numer) => {
+    const isSelected = useCallback((pageNum: number) => {
             return currentPage() === pageNum;
         },
         [searchParams],

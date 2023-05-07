@@ -19,12 +19,12 @@ export type PlatformSchedule = {
 };
 
 export type AllPlatformSchedules = {
-    afreeca: SchedulePage,
-    twitch: SchedulePage,
-    youtube: SchedulePage,
+    afreeca: PlatformSchedule,
+    twitch: PlatformSchedule,
+    youtube: PlatformSchedule,
 };
 
-export type ResponseBodyDTO = ErrorResponse|AllSchedulePages;
+export type ResponseBodyDTO = ErrorResponse|AllPlatformSchedules;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseBodyDTO>)  {
     if (process.env.NODE_ENV === "development") {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useCallback } from 'react';
+import { useCallback, ReactNode } from 'react';
 import { useSearchParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -33,7 +33,7 @@ function Picker(props: {href: string, selected: boolean, children: ReactNode}) {
         <>
             <StyledLink
                 href={props.href}
-                style={props.selected ? selectedStyle : null}
+                style={props.selected ? selectedStyle : undefined}
                 scroll={false}
             >
                 {props.children}
@@ -56,7 +56,7 @@ export default function DatePagination() {
         [searchParams],
     );
 
-    const createDateString = (offset: number):string => {
+    const createDateText = (offset: number):number => {
         const date = new Date();
         date.setDate(date.getDate() + offset);
         return date.getDate();
@@ -76,7 +76,7 @@ export default function DatePagination() {
                     href={`${pathname}?${createQueryString(offset)}`}
                     selected={isSelected(offset)}
                 >
-                {createDateString(offset)}
+                {createDateText(offset)}
                 </Picker>
             ))}
         </Container>
