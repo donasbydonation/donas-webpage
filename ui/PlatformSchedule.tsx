@@ -15,11 +15,12 @@ const Image = styled.img`
 
 const List = styled.div`
     display: flex;
+    flex-wrap: wrap;
 `;
 
 const Footer = styled.div`
     display: flex;
-    padding: 16px 0px;
+    padding: 3px 0px 16px 0px;
     align-items: center;
     justify-content: space-between;
 `;

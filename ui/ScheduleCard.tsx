@@ -5,7 +5,7 @@ const Container = styled.div`
     padding: 11px;
     display: grid;
     width: calc(20% - 30px);
-    margin: 0px 15px;
+    margin: 13px 15px;
     grid-template:
         "image  creator"    auto
         "image  time"       23px
