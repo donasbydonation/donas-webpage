@@ -31,7 +31,7 @@ const Button = styled.button`
 `;
 
 
-export default function Aside(props: { creatorInfos: CreatorInfo[]}) {
+export default function Aside(props: {creatorInfos: CreatorInfo[]}) {
     const onClickSearch = () => {
         // TODO: search button
         console.warn("TODO");
