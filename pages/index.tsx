@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
 import TitleBar from '@/ui/TitleBar';
-import DateBar from '@/ui/DateBar';
+import DatePagination from '@/ui/DatePagination';
 import PlatformScheduleBar from '@/ui/PlatformScheduleBar';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
@@ -38,7 +38,7 @@ export default function Home(props: HomeProps) {
             <Aside creatorInfos={props.creatorInfos} />
             <Banner />
             <TitleBar />
-            <DateBar />
+            <DatePagination />
             <StyledMain>
                 <PlatformScheduleBar platform="afreeca" schedule={props.afreecaSchedules} />
                 <PlatformScheduleBar platform="twitch" schedule={props.twitchSchedules} />
