@@ -6,14 +6,14 @@ import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import { GetServerSideProps } from 'next';
 
-type HomeProps = {
+type HomePageProps = {
     creatorInfos: CreatorInfo[],
     afreecaSchedules: PlatformScheduleType,
     twitchSchedules: PlatformScheduleType,
     youtubeSchedules: PlatformScheduleType,
 };
 
-export default function Home(props: HomeProps) {
+export default function HomePage(props: HomePageProps) {
     return (
         <HomeLayout asideCreatorInfos={props.creatorInfos} >
             <PlatformSchedule platform="afreeca" schedule={props.afreecaSchedules} />
@@ -23,7 +23,7 @@ export default function Home(props: HomeProps) {
     );
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx) => {
     const baseUrl = "http://localhost:3000"
     const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
 

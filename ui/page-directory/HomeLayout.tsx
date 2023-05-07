@@ -4,6 +4,7 @@ import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
 import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
+import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 
 const StyledGrid = styled.div`
     margin-top: 47px;

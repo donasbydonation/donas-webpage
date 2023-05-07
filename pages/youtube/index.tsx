@@ -19,7 +19,7 @@ export default function YouTubePage(props: YouTubePageProps) {
     );
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<YouTubePageProps> = async (ctx) => {
     const baseUrl = "http://localhost:3000"
     const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
 
