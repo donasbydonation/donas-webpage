@@ -12,7 +12,7 @@ export const data: ResponseBodyDTO = {
                 "broadcastLink": "broadcastLink15",
                 "title": "title15",
                 "bannerImage": "bannerImage15",
-                "description": "description15",
+                "description": "In this example the -webkit-line-clamp property is set to 3, which means the text is clamped after three lines. An ellipsis will be shown at the point where the text is clamped.",
                 "scheduledTime": "2023-05-03T15:00:00Z"
             },
             {

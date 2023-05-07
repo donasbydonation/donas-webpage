@@ -38,8 +38,12 @@ const Description = styled.p`
     grid-area: desc;
     font-size: 15px;
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 70px;
     margin: 15px 0px 0px 0px;
-    min-height: 67px;
 `;
 
 function convdate(utc: string): string {
