@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { PlatformSchedule } from '@/pages/api/v1/schedules/list';
 import ScheduleCard from './ScheduleCard';
 import PlatformSchedulePagination from './PlatformSchedulePagination';
+import ExtendPlatformButton from './ExtendPlatformButton';
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
@@ -40,7 +41,7 @@ export default function PlatformScheduleBar(props: { platform: string, schedule:
                     totalPages={props.schedule.totalPage}
                     defaultPage={props.schedule.recommendPage}
                 />
-                <button>일정 더보기</button>
+                <ExtendPlatformButton platform={props.platform} />
             </Footer>
         </Container>
     );
