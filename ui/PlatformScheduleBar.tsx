@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { PlatformSchedule } from '@/pages/api/v1/schedules/list';
 import ScheduleCard from './ScheduleCard';
-import Pagination from './Pagination';
+import PlatformSchedulePagination from './PlatformSchedulePagination';
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
@@ -34,9 +34,13 @@ export default function PlatformScheduleBar(props: { platform: string, schedule:
                 ))}
             </List>
             <Footer>
-            <span>{" "}</span>
-            <Pagination />
-            <button>일정 더보기</button>
+                <span>{" "}</span>
+                <PlatformSchedulePagination
+                    eventKey={`${props.platform}-idx`}
+                    totalPages={props.schedule.totalPage}
+                    defaultPage={props.schedule.recommendPage}
+                />
+                <button>일정 더보기</button>
             </Footer>
         </Container>
     );
