@@ -1,4 +1,4 @@
-import type { ResponseBodyDTO } from '@/api/v1/schedules/list';
+import type { ResponseBodyDTO } from '@/pages/api/v1/schedules/list';
 
 export const data: ResponseBodyDTO = {
     "twitch": {
