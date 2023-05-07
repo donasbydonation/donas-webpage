@@ -1,54 +1,29 @@
 import styled from 'styled-components';
-import Aside from '@/ui/Aside';
-import Banner from '@/ui/Banner';
-import ScheduleTitle from '@/ui/ScheduleTitle';
-import DatePagination from '@/ui/DatePagination';
+import HomeLayout from '@/ui/page-directory/HomeLayout';
 import PlatformSchedule from '@/ui/PlatformSchedule';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import { GetServerSideProps } from 'next';
 
-const StyledGrid = styled.div`
-    margin-top: 47px;
-    display: grid;
-    grid-template:
-        "aside  banner  banner  banner" auto
-        "aside  .       title   ."      53px
-        "aside  .       date    ."      44px
-        "aside  .       main    ."      auto
-       / 283px  26px    auto    26px;
-`;
-
-const StyledMain = styled.main`
-    grid-area: main;
-`;
-
-type HomeProps = {
+type HomePageProps = {
     creatorInfos: CreatorInfo[],
     afreecaSchedules: PlatformScheduleType,
     twitchSchedules: PlatformScheduleType,
     youtubeSchedules: PlatformScheduleType,
 };
 
-export default function Home(props: HomeProps) {
+export default function HomePage(props: HomePageProps) {
     return (
-        <StyledGrid>
-            <Aside creatorInfos={props.creatorInfos} />
-            <Banner />
-            <ScheduleTitle />
-            <DatePagination />
-            <StyledMain>
-                <PlatformSchedule platform="afreeca" schedule={props.afreecaSchedules} />
-                <PlatformSchedule platform="twitch" schedule={props.twitchSchedules} />
-                <PlatformSchedule platform="youtube" schedule={props.youtubeSchedules} />
-            </StyledMain>
-        </StyledGrid>
+        <HomeLayout asideCreatorInfos={props.creatorInfos} >
+            <PlatformSchedule platform="afreeca" schedule={props.afreecaSchedules} />
+            <PlatformSchedule platform="twitch" schedule={props.twitchSchedules} />
+            <PlatformSchedule platform="youtube" schedule={props.youtubeSchedules} />
+        </HomeLayout>
     );
 }
 
-export const getServerSideProps: GetServerSideProps<HomeProps> = async (ctx) => {
-// export async function getServerSideProps(ctx: GetServerSideProps) {
+export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx) => {
     const baseUrl = "http://localhost:3000"
     const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
 

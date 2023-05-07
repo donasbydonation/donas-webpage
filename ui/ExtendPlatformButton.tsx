@@ -11,22 +11,10 @@ const Container = styled.button`
 `;
 
 export default function ExtendPlatformButton(props: {platform: string}) {
-    const queyKey = "platform";
-
     const router = useRouter();
 
-    const pathname = usePathname();
-    const searchParams = useSearchParams()!;
-    const createQueryString = useCallback(() => {
-            const params = new URLSearchParams(searchParams);
-            params.set(queyKey, props.platform);
-            return params.toString();
-        },
-        [searchParams],
-    );
-
     const onClickButton = () => {
-        router.push(`${pathname}?${createQueryString()}`);
+        router.push(`/${props.platform}`);
     };
 
     return (
