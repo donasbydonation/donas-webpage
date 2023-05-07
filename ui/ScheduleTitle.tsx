@@ -22,7 +22,7 @@ const DateText = styled.span`
     color: #FF3363;
 `;
 
-export default function TitleBar() {
+export default function ScheduleTitle() {
     const date = new Date();
     const searchParams = useSearchParams();
     date.setDate(date.getDate() + parseInt(searchParams.get("offset") || "0"))

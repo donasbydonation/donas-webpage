@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
-import TitleBar from '@/ui/TitleBar';
+import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
 import PlatformScheduleBar from '@/ui/PlatformScheduleBar';
 import { axios } from '@/lib/axios';
@@ -37,7 +37,7 @@ export default function Home(props: HomeProps) {
         <StyledGrid>
             <Aside creatorInfos={props.creatorInfos} />
             <Banner />
-            <TitleBar />
+            <ScheduleTitle />
             <DatePagination />
             <StyledMain>
                 <PlatformScheduleBar platform="afreeca" schedule={props.afreecaSchedules} />
