@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { PlatformSchedule } from '@/pages/api/v1/schedules/list';
+import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import ScheduleCard from './ScheduleCard';
 import PlatformSchedulePagination from './PlatformSchedulePagination';
 import ExtendPlatformButton from './ExtendPlatformButton';
@@ -24,7 +24,7 @@ const Footer = styled.div`
     justify-content: space-between;
 `;
 
-export default function PlatformScheduleBar(props: { platform: string, schedule: PlatformSchedule }) {
+export default function PlatformSchedule(props: { platform: string, schedule: PlatformScheduleType }) {
     return (
         <Container>
             <Image src={`/images/icons/platforms/${props.platform}-full.svg`} alt={`${props.platform} icon`} />

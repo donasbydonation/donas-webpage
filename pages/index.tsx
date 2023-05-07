@@ -3,10 +3,10 @@ import Aside from '@/ui/Aside';
 import Banner from '@/ui/Banner';
 import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
-import PlatformScheduleBar from '@/ui/PlatformScheduleBar';
+import PlatformSchedule from '@/ui/PlatformSchedule';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import { PlatformSchedule } from '@/pages/api/v1/schedules/list';
+import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import { GetServerSideProps } from 'next';
 
 const StyledGrid = styled.div`
@@ -26,9 +26,9 @@ const StyledMain = styled.main`
 
 type HomeProps = {
     creatorInfos: CreatorInfo[],
-    afreecaSchedules: PlatformSchedule,
-    twitchSchedules: PlatformSchedule,
-    youtubeSchedules: PlatformSchedule,
+    afreecaSchedules: PlatformScheduleType,
+    twitchSchedules: PlatformScheduleType,
+    youtubeSchedules: PlatformScheduleType,
 };
 
 export default function Home(props: HomeProps) {
@@ -39,9 +39,9 @@ export default function Home(props: HomeProps) {
             <ScheduleTitle />
             <DatePagination />
             <StyledMain>
-                <PlatformScheduleBar platform="afreeca" schedule={props.afreecaSchedules} />
-                <PlatformScheduleBar platform="twitch" schedule={props.twitchSchedules} />
-                <PlatformScheduleBar platform="youtube" schedule={props.youtubeSchedules} />
+                <PlatformSchedule platform="afreeca" schedule={props.afreecaSchedules} />
+                <PlatformSchedule platform="twitch" schedule={props.twitchSchedules} />
+                <PlatformSchedule platform="youtube" schedule={props.youtubeSchedules} />
             </StyledMain>
         </StyledGrid>
     );
