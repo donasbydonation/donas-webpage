@@ -20,8 +20,7 @@ export default function YouTubePage(props: YouTubePageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<YouTubePageProps> = async (ctx) => {
-    const baseUrl = "http://localhost:3000"
-    const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
+    const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
     const commonScheduleQueryParam = [
         `time=${encodeURIComponent(new Date().toISOString())}`,
@@ -34,14 +33,14 @@ export const getServerSideProps: GetServerSideProps<YouTubePageProps> = async (c
         ...commonScheduleQueryParam,
         `size=10`,
     ];
-    const preflight = await axios.get(`${baseUrl}/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
+    const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
 
     // Youtube schedules
     const queryParam = [
         ...commonScheduleQueryParam,
         `size=${preflight.data.youtube.totalPage * 10}`,
     ];
-    const schedules = await axios.get(`${baseUrl}/api/v1/schedules/list?${queryParam.join('&')}`);
+    const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
 
     return {
         props: {

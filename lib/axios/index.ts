@@ -7,6 +7,7 @@ export type ErrorResponse = {
 };
 
 export const axios = Axios.create({
+    baseURL: `http://${process.env.BACK_END_URL || "localhost:3000"}`,
     headers: {
         Accept: "application/json",
     },

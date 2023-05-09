@@ -24,8 +24,7 @@ export default function HomePage(props: HomePageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx) => {
-    const baseUrl = "http://localhost:3000"
-    const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
+    const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
     const commonScheduleQueryParam = [
         `time=${encodeURIComponent(new Date().toISOString())}`,
@@ -39,7 +38,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
         `size=0`,
         `provider=TOTAL`,
     ];
-    const preflight = await axios.get(`${baseUrl}/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
+    const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
 
     // Afreeca schedules
     const afreecaScheduleQueryParam = [
@@ -47,7 +46,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
         `page=${preflight.data.afreeca.recommendPage}`,
         `provider=AFREECA`,
     ];
-    const afreecaSchedule = await axios.get(`${baseUrl}/api/v1/schedules/list?${afreecaScheduleQueryParam.join('&')}`);
+    const afreecaSchedule = await axios.get(`/api/v1/schedules/list?${afreecaScheduleQueryParam.join('&')}`);
 
     // Twtich schedules
     const twitchScheduleQueryParam = [
@@ -55,7 +54,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
         `page=${preflight.data.twitch.recommendPage}`,
         `provider=TWITCH`,
     ];
-    const twitchSchedule = await axios.get(`${baseUrl}/api/v1/schedules/list?${twitchScheduleQueryParam.join('&')}`);
+    const twitchSchedule = await axios.get(`/api/v1/schedules/list?${twitchScheduleQueryParam.join('&')}`);
 
     // Youtube schedules
     const youtubeScheduleQueryParam = [
@@ -63,7 +62,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
         `page=${preflight.data.youtube.recommendPage}`,
         `provider=YOUTUBE`,
     ];
-    const youtubeSchedule = await axios.get(`${baseUrl}/api/v1/schedules/list?${youtubeScheduleQueryParam.join('&')}`);
+    const youtubeSchedule = await axios.get(`/api/v1/schedules/list?${youtubeScheduleQueryParam.join('&')}`);
 
     return {
         props: {
