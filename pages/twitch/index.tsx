@@ -5,6 +5,7 @@ import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import { GetServerSideProps } from 'next';
+import { getNow } from '@/lib/datetime';
 
 type TwitchPageProps = {
     creatorInfos: CreatorInfo[],
@@ -23,7 +24,7 @@ export const getServerSideProps: GetServerSideProps<TwitchPageProps> = async (ct
     const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
     const commonScheduleQueryParam = [
-        `time=${encodeURIComponent(new Date().toISOString())}`,
+        `time=${getNow()}`,
         `day=${ctx.query?.offset || "0"}`,
         `provider=TWITCH`,
     ];
