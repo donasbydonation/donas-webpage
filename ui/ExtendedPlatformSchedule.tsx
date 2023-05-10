@@ -20,7 +20,7 @@ export default function ExtendedPlatformSchedule(props: { platform: string, sche
         <Container>
             <Image src={`/images/icons/platforms/${props.platform}-full.svg`} alt={`${props.platform} icon`} />
             <List>
-                {props.schedule.schedules.map((schedule, idx) => (
+                {props.schedule.schedules.filter(s => (s.broadcastLink !== "")).map((schedule, idx) => (
                     <ScheduleCard schedule={schedule} key={idx} />
                 ))}
             </List>
