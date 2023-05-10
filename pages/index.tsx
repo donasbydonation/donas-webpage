@@ -35,8 +35,6 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     // Preflight: get recommendPage
     const preflightQueryParam = [
         ...commonScheduleQueryParam,
-        `page=0`,
-        `size=0`,
         `provider=TOTAL`,
     ];
     const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
