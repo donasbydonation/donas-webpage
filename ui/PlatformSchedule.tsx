@@ -3,14 +3,10 @@ import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedul
 import PlatformSchedulePagination from './PlatformSchedulePagination';
 import ExtendPlatformButton from './ExtendPlatformButton';
 import ScheduleList from './ScheduleList';
+import ScheduleHeader from './ScheduleHeader';
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
-`;
-
-const Image = styled.img`
-    height: 18px;
-    margin: 9px 0px;
 `;
 
 const Footer = styled.div`
@@ -25,7 +21,7 @@ export type PlatformScheduleProps = {platform: string, schedule: PlatformSchedul
 export default function PlatformSchedule(props: PlatformScheduleProps) {
     return (
         <Container>
-            <Image src={`/images/icons/platforms/${props.platform}-full.svg`} alt={`${props.platform} icon`} />
+            <ScheduleHeader platform={props.platform} />
             <ScheduleList schedule={props.schedule} />
             <Footer>
                 <span>{" "}</span>
