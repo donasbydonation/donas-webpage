@@ -1,2 +1,2 @@
 #!/bin/bash
-/etc/donas/before_install.sh
+/etc/donas/app/before_install.sh
