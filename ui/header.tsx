@@ -1,14 +1,17 @@
 import styled from 'styled-components'
+import Link from 'next/link';
 
 const LogoImg = styled.img`
-    height: 60px;
-    width: 171px;
-`
+    height: 20px;
+    width: 122px;
+`;
 
 export default function Header(){
     return (
         <header>
-            <LogoImg src= "/images/logo.png" alt="logo" />
+            <Link href="/">
+                <LogoImg src= "/images/logo.svg" alt="Donas logo" />
+            </Link>
         </header>
     )
 }
