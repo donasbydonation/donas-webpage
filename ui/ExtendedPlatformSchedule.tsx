@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
-import ScheduleCard from './ScheduleCard';
+import ScheduleList from './ScheduleList';
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
@@ -11,19 +11,12 @@ const Image = styled.img`
     margin: 9px 0px;
 `;
 
-const List = styled.div`
-    display: flex;
-`;
-
 export default function ExtendedPlatformSchedule(props: { platform: string, schedule: PlatformScheduleType }) {
+    const schedules = props.schedule.schedules.filter(s => (s.broadcastLink !== ""));
     return (
         <Container>
             <Image src={`/images/icons/platforms/${props.platform}-full.svg`} alt={`${props.platform} icon`} />
-            <List>
-                {props.schedule.schedules.map((schedule, idx) => (
-                    <ScheduleCard schedule={schedule} key={idx} />
-                ))}
-            </List>
+            <ScheduleList schedule={props.schedule} />
         </Container>
     );
 }

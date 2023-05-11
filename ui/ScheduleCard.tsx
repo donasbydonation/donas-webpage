@@ -5,7 +5,9 @@ const Container = styled.div`
     padding: 11px;
     display: grid;
     width: calc(20% - 30px);
-    margin: 0px 15px;
+    min-width: 165px;
+    flex-shrink: 0;
+    margin: 13px 15px;
     grid-template:
         "image  creator"    auto
         "image  time"       23px
@@ -38,8 +40,12 @@ const Description = styled.p`
     grid-area: desc;
     font-size: 15px;
     font-weight: 500;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 78px;
     margin: 15px 0px 0px 0px;
-    min-height: 67px;
 `;
 
 function convdate(utc: string): string {

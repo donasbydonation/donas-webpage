@@ -5,6 +5,7 @@ import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
 import { GetServerSideProps } from 'next';
+import { getNow } from '@/lib/datetime';
 
 type TwitchPageProps = {
     creatorInfos: CreatorInfo[],
@@ -20,28 +21,15 @@ export default function TwitchPage(props: TwitchPageProps) {
 }
 
 export const getServerSideProps: GetServerSideProps<TwitchPageProps> = async (ctx) => {
-    const baseUrl = "http://localhost:3000"
-    const creatorInfos = await axios.get(`${baseUrl}/api/v1/creator-infos/list`);
+    const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
-    const commonScheduleQueryParam = [
-        `time=${encodeURIComponent(new Date().toISOString())}`,
+    const queryParam = [
+        `time=${getNow()}`,
         `day=${ctx.query?.offset || "0"}`,
         `provider=TWITCH`,
     ];
 
-    // Preflight: get recommendPage
-    const preflightQueryParam = [
-        ...commonScheduleQueryParam,
-        `size=10`,
-    ];
-    const preflight = await axios.get(`${baseUrl}/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
-
-    // Twitch schedules
-    const queryParam = [
-        ...commonScheduleQueryParam,
-        `size=${preflight.data.twitch.totalPage * 10}`,
-    ];
-    const schedules = await axios.get(`${baseUrl}/api/v1/schedules/list?${queryParam.join('&')}`);
+    const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
 
     return {
         props: {

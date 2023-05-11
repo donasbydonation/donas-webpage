@@ -1,44 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import { ErrorResponse } from '@/lib/axios';
+import type { ResponseBodyDTO } from '@/pages/api/v1/schedules/list';
 
-export type Schedule = {
-    creatorName: string,
-    profileImage: string,
-    provider: "AFREECA"|"TWITCH"|"YOUTUBE",
-    broadcastLink: string,
-    title: string,
-    bannerImage: string,
-    description: string,
-    scheduledTime: string,
-};
-
-export type PlatformSchedule = {
-    totalPage: number,
-    recommendPage: number,
-    schedules: Schedule[],
-};
-
-export type AllPlatformSchedules = {
-    afreeca: PlatformSchedule,
-    twitch: PlatformSchedule,
-    youtube: PlatformSchedule,
-};
-
-export type ResponseBodyDTO = ErrorResponse|AllPlatformSchedules;
-
-export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseBodyDTO>)  {
-    if (process.env.NODE_ENV === "development") {
-        res.status(200).json(mockData);
-    } else {
-        res.status(403).json({
-            name: "FORBIDDEN",
-            httpStatus: "FORBIDDEN",
-            message: "Error message from Next.js: API call must be routed to apiserver"
-        });
-    }
-}
-
-const mockData: ResponseBodyDTO = {
+export const data: ResponseBodyDTO = {
     "twitch": {
         "totalPage": 5,
         "recommendPage": 4,
@@ -50,7 +12,7 @@ const mockData: ResponseBodyDTO = {
                 "broadcastLink": "broadcastLink15",
                 "title": "title15",
                 "bannerImage": "bannerImage15",
-                "description": "description15",
+                "description": "In this example the -webkit-line-clamp property is set to 3, which means the text is clamped after three lines. An ellipsis will be shown at the point where the text is clamped.",
                 "scheduledTime": "2023-05-03T15:00:00Z"
             },
             {
@@ -125,6 +87,66 @@ const mockData: ResponseBodyDTO = {
         "totalPage": 2,
         "recommendPage": 2,
         "schedules": [
+            {
+                "creatorName": "creator-name15",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink15",
+                "title": "title15",
+                "bannerImage": "bannerImage15",
+                "description": "description15",
+                "scheduledTime": "2023-05-03T15:00:00Z"
+            },
+            {
+                "creatorName": "creator-name19",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink19",
+                "title": "title19",
+                "bannerImage": "bannerImage19",
+                "description": "description19",
+                "scheduledTime": "2023-05-03T19:00:00Z"
+            },
+            {
+                "creatorName": "creator-name15",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink15",
+                "title": "title15",
+                "bannerImage": "bannerImage15",
+                "description": "description15",
+                "scheduledTime": "2023-05-03T15:00:00Z"
+            },
+            {
+                "creatorName": "creator-name19",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink19",
+                "title": "title19",
+                "bannerImage": "bannerImage19",
+                "description": "description19",
+                "scheduledTime": "2023-05-03T19:00:00Z"
+            },
+            {
+                "creatorName": "creator-name15",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink15",
+                "title": "title15",
+                "bannerImage": "bannerImage15",
+                "description": "description15",
+                "scheduledTime": "2023-05-03T15:00:00Z"
+            },
+            {
+                "creatorName": "creator-name19",
+                "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
+                "provider": "YOUTUBE",
+                "broadcastLink": "broadcastLink19",
+                "title": "title19",
+                "bannerImage": "bannerImage19",
+                "description": "description19",
+                "scheduledTime": "2023-05-03T19:00:00Z"
+            },
             {
                 "creatorName": "creator-name15",
                 "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",

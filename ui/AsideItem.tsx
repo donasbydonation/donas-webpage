@@ -36,7 +36,7 @@ export default function AsideItem(props: {creatorInfo: CreatorInfo}) {
                     {props.creatorInfo.name}
                 </Title>
                 <div>
-                    {props.creatorInfo.platforms.map((platform, idx) => (
+                    {props.creatorInfo.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
                         <BroadcastLink platform={platform} key={idx} />
                     ))}
                 </div>

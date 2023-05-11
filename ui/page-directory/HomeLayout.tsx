@@ -6,8 +6,12 @@ import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 
+const Container = styled.div`
+    padding-top: 47px;
+    min-height: calc(100vh - 32px);
+`;
+
 const StyledGrid = styled.div`
-    margin-top: 47px;
     display: grid;
     grid-template:
         "aside  banner  banner  banner" auto
@@ -28,14 +32,16 @@ type HomeLayoutProps = {
 
 export default function HomeLayout(props: HomeLayoutProps) {
     return (
-        <StyledGrid>
-            <Aside creatorInfos={props.asideCreatorInfos} />
-            <Banner />
-            <ScheduleTitle />
-            <DatePagination />
-            <StyledMain>
-                {props.children}
-            </StyledMain>
-        </StyledGrid>
+        <Container>
+            <StyledGrid>
+                <Aside creatorInfos={props.asideCreatorInfos} />
+                <Banner />
+                <ScheduleTitle />
+                <DatePagination />
+                <StyledMain>
+                    {props.children}
+                </StyledMain>
+            </StyledGrid>
+        </Container>
     );
 }
