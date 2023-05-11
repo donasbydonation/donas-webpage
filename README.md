@@ -1,5 +1,17 @@
 # Donas webpage
 
+## Proposals
+
+### Development proposal (Updated May 12, 2023)
+
+- NextJS SSR
+
+### Deployment proposal (Updated May 12, 2023)
+
+- GitHub action CI
+- AWS CodeDeploy CD
+- Docker compose for container orchestration
+
 ## Image info (`ghcr.io/donasbydonation/front-end`)
 
 ### Ports
