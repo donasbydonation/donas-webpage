@@ -19,6 +19,7 @@ const List = styled.div`
     min-height: 183px;
     align-items: center;
     flex-wrap: wrap;
+    overflow: hidden;
 `;
 
 const Footer = styled.div`

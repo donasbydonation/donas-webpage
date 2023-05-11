@@ -13,6 +13,7 @@ const Image = styled.img`
 
 const List = styled.div`
     display: flex;
+    flex-wrap: wrap;
 `;
 
 export default function ExtendedPlatformSchedule(props: { platform: string, schedule: PlatformScheduleType }) {

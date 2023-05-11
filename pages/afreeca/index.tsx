@@ -23,24 +23,12 @@ export default function AfreecaPage(props: AfreecaPageProps) {
 export const getServerSideProps: GetServerSideProps<AfreecaPageProps> = async (ctx) => {
     const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
-    const commonScheduleQueryParam = [
+    const queryParam = [
         `time=${getNow()}`,
         `day=${ctx.query?.offset || "0"}`,
         `provider=AFREECA`,
     ];
 
-    // Preflight: get recommendPage
-    const preflightQueryParam = [
-        ...commonScheduleQueryParam,
-        `size=10`,
-    ];
-    const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
-
-    // Afreeca schedules
-    const queryParam = [
-        ...commonScheduleQueryParam,
-        `size=${preflight.data.afreeca.totalPage * 10}`,
-    ];
     const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
 
     return {

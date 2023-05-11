@@ -23,24 +23,12 @@ export default function TwitchPage(props: TwitchPageProps) {
 export const getServerSideProps: GetServerSideProps<TwitchPageProps> = async (ctx) => {
     const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
-    const commonScheduleQueryParam = [
+    const queryParam = [
         `time=${getNow()}`,
         `day=${ctx.query?.offset || "0"}`,
         `provider=TWITCH`,
     ];
 
-    // Preflight: get recommendPage
-    const preflightQueryParam = [
-        ...commonScheduleQueryParam,
-        `size=10`,
-    ];
-    const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
-
-    // Twitch schedules
-    const queryParam = [
-        ...commonScheduleQueryParam,
-        `size=${preflight.data.twitch.totalPage * 10}`,
-    ];
     const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
 
     return {
