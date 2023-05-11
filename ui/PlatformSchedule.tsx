@@ -25,7 +25,9 @@ const Footer = styled.div`
     justify-content: space-between;
 `;
 
-export default function PlatformSchedule(props: { platform: string, schedule: PlatformScheduleType }) {
+export type PlatformScheduleProps = {platform: string, schedule: PlatformScheduleType, selectedPage: number};
+
+export default function PlatformSchedule(props: PlatformScheduleProps) {
     return (
         <Container>
             <Image src={`/images/icons/platforms/${props.platform}-full.svg`} alt={`${props.platform} icon`} />
@@ -37,9 +39,9 @@ export default function PlatformSchedule(props: { platform: string, schedule: Pl
             <Footer>
                 <span>{" "}</span>
                 <PlatformSchedulePagination
-                    eventKey={`${props.platform}-idx`}
+                    eventKey={`${props.platform}Idx`}
                     totalPages={props.schedule.totalPage}
-                    defaultPage={props.schedule.recommendPage}
+                    selectedPage={props.selectedPage}
                 />
                 <ExtendPlatformButton platform={props.platform} />
             </Footer>

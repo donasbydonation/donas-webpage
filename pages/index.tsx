@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import HomeLayout from '@/ui/page-directory/HomeLayout';
-import PlatformSchedule from '@/ui/PlatformSchedule';
+import PlatformSchedule, { PlatformScheduleProps } from '@/ui/PlatformSchedule';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
@@ -9,17 +9,20 @@ import { getNow } from '@/lib/datetime';
 
 type HomePageProps = {
     creatorInfos: CreatorInfo[],
-    afreecaSchedules: PlatformScheduleType,
-    twitchSchedules: PlatformScheduleType,
-    youtubeSchedules: PlatformScheduleType,
+    platforms: PlatformScheduleProps[],
 };
 
 export default function HomePage(props: HomePageProps) {
     return (
         <HomeLayout asideCreatorInfos={props.creatorInfos} >
-            <PlatformSchedule platform="afreeca" schedule={props.afreecaSchedules} />
-            <PlatformSchedule platform="twitch" schedule={props.twitchSchedules} />
-            <PlatformSchedule platform="youtube" schedule={props.youtubeSchedules} />
+            {props.platforms.map((p, i) => (
+                <PlatformSchedule
+                    platform={p.platform}
+                    schedule={p.schedule}
+                    selectedPage={p.selectedPage}
+                    key={i}
+                />
+            ))}
         </HomeLayout>
     );
 }
@@ -30,45 +33,40 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     const commonScheduleQueryParam = [
         `time=${getNow()}`,
         `day=${ctx.query?.offset || "0"}`,
+        `provider=TOTAL`,
     ];
 
     // Preflight: get recommendPage
     const preflightQueryParam = [
-        ...commonScheduleQueryParam,
-        `provider=TOTAL`,
+        ...commonScheduleQueryParam
     ];
-    const preflight = await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`);
+    const preflight = (await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`)).data;
 
-    // Afreeca schedules
-    const afreecaScheduleQueryParam = [
-        ...commonScheduleQueryParam,
-        `page=${preflight.data.afreeca.recommendPage}`,
-        `provider=AFREECA`,
-    ];
-    const afreecaSchedule = await axios.get(`/api/v1/schedules/list?${afreecaScheduleQueryParam.join('&')}`);
+    const getPlatformScheduleProps = async (platform: string) => {
+        const recommendPage = preflight[platform].recommendPage;
+        const queryParamIdx = ctx.query ? (ctx.query[`${platform}Idx`] as string) : "";
+        const selectedPage = parseInt(queryParamIdx) || recommendPage;
 
-    // Twtich schedules
-    const twitchScheduleQueryParam = [
-        ...commonScheduleQueryParam,
-        `page=${preflight.data.twitch.recommendPage}`,
-        `provider=TWITCH`,
-    ];
-    const twitchSchedule = await axios.get(`/api/v1/schedules/list?${twitchScheduleQueryParam.join('&')}`);
+        const scheduleQueryParam = [
+            ...commonScheduleQueryParam,
+            `page=${selectedPage - 1}`,
+        ];
 
-    // Youtube schedules
-    const youtubeScheduleQueryParam = [
-        ...commonScheduleQueryParam,
-        `page=${preflight.data.youtube.recommendPage}`,
-        `provider=YOUTUBE`,
-    ];
-    const youtubeSchedule = await axios.get(`/api/v1/schedules/list?${youtubeScheduleQueryParam.join('&')}`);
+        return {
+            platform,
+            schedule: (await axios.get(`/api/v1/schedules/list?${scheduleQueryParam.join('&')}`)).data[platform],
+            selectedPage,
+        };
+    };
 
     return {
         props: {
             creatorInfos: creatorInfos.data,
-            afreecaSchedules: afreecaSchedule.data.afreeca,
-            twitchSchedules: twitchSchedule.data.twitch,
-            youtubeSchedules: youtubeSchedule.data.youtube,
+            platforms: [
+                await getPlatformScheduleProps("afreeca"),
+                await getPlatformScheduleProps("twitch"),
+                await getPlatformScheduleProps("youtube"),
+            ]
         },
     };
 }
