@@ -8,7 +8,6 @@ const List = styled.div`
     min-height: 183px;
     align-items: center;
     flex-wrap: wrap;
-    overflow: hidden;
 `;
 
 export default function ScheduleList(props: {schedule: PlatformScheduleType}) {

@@ -5,6 +5,7 @@ const Container = styled.div`
     padding: 11px;
     display: grid;
     width: calc(20% - 30px);
+    min-width: 165px;
     flex-shrink: 0;
     margin: 13px 15px;
     grid-template:
@@ -43,7 +44,7 @@ const Description = styled.p`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 70px;
+    min-height: 78px;
     margin: 15px 0px 0px 0px;
 `;
 
