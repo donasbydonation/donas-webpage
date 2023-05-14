@@ -1,9 +1,9 @@
-import type { AppProps } from 'next/app'
-import Head from 'next/head'
-import 'styles/reset-defaults.css'
-import 'styles/global.css'
-import GlobalNav from '@/ui/global-nav'
-import Footer from '@/ui/footer'
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import 'styles/reset-defaults.css';
+import 'styles/global.css';
+import GlobalNav from '@/ui/global-nav';
+import Footer from '@/ui/footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
