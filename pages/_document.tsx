@@ -1,5 +1,5 @@
-import { Html, Head, Main, NextScript } from 'next/document'
-import * as gtag from '../lib/gtag'
+import { Html, Head, Main, NextScript } from 'next/document';
+import * as gtag from '../lib/gtag';
 
 export default function Document() {
   return (
