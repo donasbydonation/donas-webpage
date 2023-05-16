@@ -13,7 +13,7 @@ const Footer = styled.div`
     display: flex;
     padding: 3px 0px 16px 0px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 `;
 
 export type PlatformScheduleProps = {platform: string, schedule: PlatformScheduleType, selectedPage: number};
@@ -21,16 +21,14 @@ export type PlatformScheduleProps = {platform: string, schedule: PlatformSchedul
 export default function PlatformSchedule(props: PlatformScheduleProps) {
     return (
         <Container>
-            <ScheduleHeader platform={props.platform} />
+            <ScheduleHeader platform={[props.platform]} />
             <ScheduleList schedule={props.schedule} />
             <Footer>
-                <span>{" "}</span>
                 <PlatformSchedulePagination
                     eventKey={`${props.platform}Idx`}
                     totalPages={props.schedule.totalPage}
                     selectedPage={props.selectedPage}
                 />
-                <ExtendPlatformButton platform={props.platform} />
             </Footer>
         </Container>
     );
