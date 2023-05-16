@@ -32,7 +32,7 @@ export default function ScheduleTitle() {
             <Image src="/images/home/live-icon.svg" alt="Live broadcasting schedule" />
             <Text>
                 <DateText>{`${date.getMonth() + 1}월 ${date.getDate()}일`}</DateText>
-                {"의 편성표"}
+                {"의 방송 공지"}
             </Text>
         </Container>
     );
