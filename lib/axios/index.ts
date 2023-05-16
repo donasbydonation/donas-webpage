@@ -18,7 +18,7 @@ axios.interceptors.request.use((req) => {
         timestamp: new Date().toISOString(),
         type: "AXIOS_API_CALL",
         content: {
-            method: `HTTP_${req.method.toUpperCase()}`,
+            method: `HTTP_${req.method?.toUpperCase()}`,
             url: req.url,
         },
     }));
