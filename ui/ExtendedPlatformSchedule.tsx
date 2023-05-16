@@ -25,7 +25,7 @@ export default function ExtendedPlatformSchedule(props: { platform: string, sche
 
     return (
         <Container>
-            <ScheduleHeader platform={props.platform} additional={additionalPlatforms} />
+            <ScheduleHeader platform={[props.platform, ...additionalPlatforms]} />
             <ScheduleList schedule={props.schedule} />
         </Container>
     );
