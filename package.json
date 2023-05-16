@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "dev:test": "NODE_ENV=production BACK_END_URL=localhost:8080 next dev",
+    "dev:test": "BACK_END_URL=localhost:8080 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
