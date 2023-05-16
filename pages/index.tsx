@@ -45,11 +45,11 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     const getPlatformScheduleProps = async (platform: string) => {
         const recommendPage = preflight[platform].recommendPage;
         const queryParamIdx = ctx.query ? (ctx.query[`${platform}Idx`] as string) : "";
-        const selectedPage = parseInt(queryParamIdx) || (recommendPage + 1);
+        const selectedPage = parseInt(queryParamIdx) || recommendPage;
 
         const scheduleQueryParam = [
             ...commonScheduleQueryParam,
-            `page=${selectedPage - 1}`,
+            `page=${selectedPage - 1}`, // starts from 0
         ];
 
         return {
