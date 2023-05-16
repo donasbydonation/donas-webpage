@@ -13,6 +13,18 @@ export const axios = Axios.create({
     },
 });
 
+axios.interceptors.request.use((req) => {
+    console.log(JSON.stringify({
+        timestamp: new Date().toISOString(),
+        type: "AXIOS_API_CALL",
+        content: {
+            method: `HTTP_${req.method.toUpperCase()}`,
+            url: req.url,
+        },
+    }));
+    return req;
+});
+
 axios.interceptors.response.use(
     (response) => {
         return response;
