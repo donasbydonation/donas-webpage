@@ -50,7 +50,7 @@ export default function ScheduleHeader(props: {platform: string[]}) {
                                 alt={`${props.platform.at(0)} icon`}
                             />
                         </Link>
-                        <ExtendPlatformButton platform={props.platform} />
+                        <ExtendPlatformButton platform={`${props.platform.at(0)}`} />
                     </>
                 ) : (
                     (extend) ? (
