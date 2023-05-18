@@ -43,7 +43,12 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     const preflight = (await axios.get(`/api/v1/schedules/list?${preflightQueryParam.join('&')}`)).data;
 
     const getPlatformScheduleProps = async (platform: string) => {
-        const recommendPage = preflight[platform].recommendPage;
+        // Ensure that the recommendPage must be in range 1 ~ totalPage
+        const recommendPage = (preflight[platform].recommendPage < 1)
+            ? 1
+            : (preflight[platform].recommendPage > preflight[platform].totalPage)
+            ? preflight[platform].totalPage
+            : preflight[platform].recommendPage;
         const queryParamIdx = ctx.query ? (ctx.query[`${platform}Idx`] as string) : "";
         const selectedPage = parseInt(queryParamIdx) || recommendPage;
 
