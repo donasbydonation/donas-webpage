@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import styled from 'styled-components';
-import Aside from '@/ui/Aside';
+import CreatorList from '@/ui/CreatorList';
 import Banner from '@/ui/Banner';
 import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
+import AsideToggle from '@/ui/AsideToggle';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import MediaQuery from 'react-responsive';
 
@@ -32,22 +33,13 @@ const MobileGrid = styled.div`
        / 32px   26px    auto    26px;
 `;
 
+const StyledAside = styled.aside`
+    grid-area: aside;
+`;
+
 const StyledMain = styled.main`
     grid-area: main;
 `;
-
-function NotResponsive(props: {children: ReactNode}) {
-    return (
-        <>
-            <Banner />
-            <ScheduleTitle />
-            <DatePagination />
-            <StyledMain>
-                {props.children}
-            </StyledMain>
-        </>
-    );
-}
 
 type HomeLayoutProps = {
     asideCreatorInfos: CreatorInfo[],
@@ -60,18 +52,28 @@ export default function HomeLayout(props: HomeLayoutProps) {
             {/* Full display */}
             <MediaQuery minWidth={780} >
                 <FullGrid>
-                    <Aside creatorInfos={props.asideCreatorInfos} />
-                    <NotResponsive>
+                    <StyledAside>
+                        <CreatorList creatorInfos={props.asideCreatorInfos} />
+                    </StyledAside>
+                    <Banner />
+                    <ScheduleTitle />
+                    <DatePagination />
+                    <StyledMain>
                         {props.children}
-                    </NotResponsive>
+                    </StyledMain>
                 </FullGrid>
             </MediaQuery>
             {/* Mobile display */}
             <MobileGrid>
-                <Aside creatorInfos={props.asideCreatorInfos} />
-                <NotResponsive>
+                <StyledAside>
+                    <AsideToggle />
+                </StyledAside>
+                <Banner />
+                <ScheduleTitle />
+                <DatePagination />
+                <StyledMain>
                     {props.children}
-                </NotResponsive>
+                </StyledMain>
             </MobileGrid>
         </Container>
     );

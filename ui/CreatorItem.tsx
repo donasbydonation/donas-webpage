@@ -21,13 +21,12 @@ const Body = styled.div`
     justify-content: space-between;
 `;
 
-
 const Title = styled.h3`
     font-size: 15px;
     font-weight: 600;
 `;
 
-export default function AsideItem(props: {creatorInfo: CreatorInfo}) {
+export default function CreatorItem(props: {creatorInfo: CreatorInfo}) {
     return (
         <Container>
             <Image src={props.creatorInfo.profileImage} alt={`${props.creatorInfo.name}`}/>
