@@ -66,7 +66,7 @@ export default function HomeLayout(props: HomeLayoutProps) {
             {/* Mobile display */}
             <MobileGrid>
                 <StyledAside>
-                    <AsideToggle />
+                    <AsideToggle creatorInfos={props.asideCreatorInfos} />
                 </StyledAside>
                 <Banner />
                 <ScheduleTitle />

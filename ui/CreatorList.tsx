@@ -4,6 +4,7 @@ import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import CreatorItem from './CreatorItem';
 
 const Container = styled.div`
+    width: 283px;
     > * {
         & {
             height: 55px;
