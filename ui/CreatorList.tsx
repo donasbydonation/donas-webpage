@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { Search } from 'react-bootstrap-icons';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import AsideItem from './AsideItem';
+import CreatorItem from './CreatorItem';
 
-const AsideContainer = styled.aside`
-    grid-area: aside;
+const Container = styled.div`
+    width: 283px;
     > * {
         & {
             height: 55px;
@@ -16,7 +16,7 @@ const AsideContainer = styled.aside`
     }
 `;
 
-const AsideHeader = styled.div`
+const Header = styled.div`
     font-size: 17px;
     font-weight: bold;
 `;
@@ -30,24 +30,23 @@ const Button = styled.button`
     cursor: pointer;
 `;
 
-
-export default function Aside(props: {creatorInfos: CreatorInfo[]}) {
+export default function CreatorList(props: {creatorInfos: CreatorInfo[]}) {
     const onClickSearch = () => {
         // TODO: search button
         console.warn("TODO");
     };
 
     return (
-        <AsideContainer>
-            <AsideHeader>
+        <Container>
+            <Header>
                 <span>크리에이터 목록</span>
                 <Button onClick={onClickSearch}>
                     <Search />
                 </Button>
-            </AsideHeader>
+            </Header>
             {props.creatorInfos.map((creatorInfo, idx) => (
-                <AsideItem creatorInfo={creatorInfo} key={idx} />
+                <CreatorItem creatorInfo={creatorInfo} key={idx} />
             ))}
-        </AsideContainer>
+        </Container>
     );
 }
