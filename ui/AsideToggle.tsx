@@ -27,24 +27,23 @@ const ModalContainer = styled.div`
     justify-content: space-between;
 `;
 
-const modalStyle: CSS.Properties = {
-    overlay: {
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0, 0, 0, 0.75)'
-    },
-    content: {
-        top: '0',
-        left: '0',
-        margin: '0',
-        padding: '0',
-        border: 'none',
-        height: '100%',
-        width: '283px',
-    },
+const overlay: CSS.Properties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)'
+};
+
+const content: CSS.Properties = {
+    top: '0',
+    left: '0',
+    margin: '0',
+    padding: '0',
+    border: 'none',
+    height: '100%',
+    width: '283px',
 };
 
 export default function AsideToggle(props: {creatorInfos: CreatorInfo[]}) {
@@ -58,7 +57,7 @@ export default function AsideToggle(props: {creatorInfos: CreatorInfo[]}) {
             <Modal
                 isOpen={modalOpen}
                 onRequestClose={onClickClose}
-                style={modalStyle}
+                style={{overlay, content}}
             >
                 <ModalContainer>
                     <CreatorList creatorInfos={props.creatorInfos} />
