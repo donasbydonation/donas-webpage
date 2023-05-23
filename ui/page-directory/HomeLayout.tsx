@@ -49,32 +49,35 @@ type HomeLayoutProps = {
 export default function HomeLayout(props: HomeLayoutProps) {
     return (
         <Container>
-            {/* Full display */}
             <MediaQuery minWidth={780} >
-                <FullGrid>
-                    <StyledAside>
-                        <CreatorList creatorInfos={props.asideCreatorInfos} />
-                    </StyledAside>
-                    <Banner />
-                    <ScheduleTitle />
-                    <DatePagination />
-                    <StyledMain>
-                        {props.children}
-                    </StyledMain>
-                </FullGrid>
+                {(desktop) => (
+                    desktop ? (
+                        <FullGrid>
+                            <StyledAside>
+                                <CreatorList creatorInfos={props.asideCreatorInfos} />
+                            </StyledAside>
+                            <Banner />
+                            <ScheduleTitle />
+                            <DatePagination />
+                            <StyledMain>
+                                {props.children}
+                            </StyledMain>
+                        </FullGrid>
+                    ) : (
+                        <MobileGrid>
+                            <StyledAside>
+                                <AsideToggle creatorInfos={props.asideCreatorInfos} />
+                            </StyledAside>
+                            <Banner />
+                            <ScheduleTitle />
+                            <DatePagination />
+                            <StyledMain>
+                                {props.children}
+                            </StyledMain>
+                        </MobileGrid>
+                    )
+                )}
             </MediaQuery>
-            {/* Mobile display */}
-            <MobileGrid>
-                <StyledAside>
-                    <AsideToggle creatorInfos={props.asideCreatorInfos} />
-                </StyledAside>
-                <Banner />
-                <ScheduleTitle />
-                <DatePagination />
-                <StyledMain>
-                    {props.children}
-                </StyledMain>
-            </MobileGrid>
         </Container>
     );
 }
