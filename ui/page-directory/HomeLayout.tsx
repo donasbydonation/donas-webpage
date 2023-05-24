@@ -6,7 +6,7 @@ import ScheduleTitle from '@/ui/ScheduleTitle';
 import DatePagination from '@/ui/DatePagination';
 import AsideToggle from '@/ui/AsideToggle';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import MediaQuery from 'react-responsive';
+import { useMediaQuery } from 'react-responsive';
 
 const Container = styled.div`
     padding-top: 47px;
@@ -47,37 +47,35 @@ type HomeLayoutProps = {
 };
 
 export default function HomeLayout(props: HomeLayoutProps) {
+    const isDesktop = useMediaQuery({query: '(min-width: 780px)'});
+
     return (
         <Container>
-            <MediaQuery minWidth={780} >
-                {(desktop) => (
-                    desktop ? (
-                        <FullGrid>
-                            <StyledAside>
-                                <CreatorList creatorInfos={props.asideCreatorInfos} />
-                            </StyledAside>
-                            <Banner />
-                            <ScheduleTitle />
-                            <DatePagination />
-                            <StyledMain>
-                                {props.children}
-                            </StyledMain>
-                        </FullGrid>
-                    ) : (
-                        <MobileGrid>
-                            <StyledAside>
-                                <AsideToggle creatorInfos={props.asideCreatorInfos} />
-                            </StyledAside>
-                            <Banner />
-                            <ScheduleTitle />
-                            <DatePagination />
-                            <StyledMain>
-                                {props.children}
-                            </StyledMain>
-                        </MobileGrid>
-                    )
-                )}
-            </MediaQuery>
+            {(isDesktop) ? (
+                <FullGrid>
+                    <StyledAside>
+                        <CreatorList creatorInfos={props.asideCreatorInfos} />
+                    </StyledAside>
+                    <Banner />
+                    <ScheduleTitle />
+                    <DatePagination />
+                    <StyledMain>
+                        {props.children}
+                    </StyledMain>
+                </FullGrid>
+            ) : (
+                <MobileGrid>
+                    <StyledAside>
+                        <AsideToggle creatorInfos={props.asideCreatorInfos} />
+                    </StyledAside>
+                    <Banner />
+                    <ScheduleTitle />
+                    <DatePagination />
+                    <StyledMain>
+                        {props.children}
+                    </StyledMain>
+                </MobileGrid>
+            )}
         </Container>
     );
 }
