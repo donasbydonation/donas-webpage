@@ -6,7 +6,7 @@ import NoData from './NoData';
 const List = styled.div`
     display: flex;
     min-height: 183px;
-    align-items: center;
+    /*align-items: center;*/
     flex-wrap: wrap;
 `;
 
