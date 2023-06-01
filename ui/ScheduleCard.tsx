@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Schedule } from '@/pages/api/v1/schedules/list';
+import { Schedule } from '@/pages/api/v2/schedules';
 
 const Container = styled.div`
     padding: 11px;
