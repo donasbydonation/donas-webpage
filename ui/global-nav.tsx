@@ -38,10 +38,10 @@ export default function GlobalNav(){
         <StyledNav>
             <Header />
             <LinkContainer>
-                <StyledLink href="https://soulcalmfunny.notion.site/0265c96352964f298b9e600bcbbd8e9b">
+                <StyledLink href="https://crboy1118.notion.site/0265c96352964f298b9e600bcbbd8e9b">
                     공지사항
                 </StyledLink>
-                <StyledLink href="https://soulcalmfunny.notion.site/6c9c74f386e54f42b5763d4b74b672ce">
+                <StyledLink href="https://crboy1118.notion.site/6c9c74f386e54f42b5763d4b74b672ce">
                     고객센터
                 </StyledLink>
             </LinkContainer>
