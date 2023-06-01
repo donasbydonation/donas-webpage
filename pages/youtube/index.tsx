@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 import HomeLayout from '@/ui/page-directory/HomeLayout';
-import ExtendedPlatformSchedule from '@/ui/ExtendedPlatformSchedule';
+import PlatformSchedule from '@/ui/PlatformSchedule';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
+import { Schedule } from '@/pages/api/v2/schedules';
 import { GetServerSideProps } from 'next';
 import { getNow } from '@/lib/datetime';
 
 type YouTubePageProps = {
     creatorInfos: CreatorInfo[],
-    schedules: PlatformScheduleType,
+    schedules: Schedule[],
 };
 
 export default function YouTubePage(props: YouTubePageProps) {
     return (
         <HomeLayout asideCreatorInfos={props.creatorInfos} >
-            <ExtendedPlatformSchedule platform="youtube" schedule={props.schedules} />
+            <PlatformSchedule platform="youtube" schedules={props.schedules} />
         </HomeLayout>
     );
 }
@@ -29,12 +29,12 @@ export const getServerSideProps: GetServerSideProps<YouTubePageProps> = async (c
         `provider=YOUTUBE`,
     ];
 
-    const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
+    const schedules = await axios.get(`/api/v2/schedules?${queryParam.join('&')}`);
 
     return {
         props: {
             creatorInfos: creatorInfos.data,
-            schedules: schedules.data.youtube,
+            schedules: schedules.data.schedules,
         },
     };
 }
