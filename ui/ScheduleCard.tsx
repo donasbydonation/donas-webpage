@@ -34,6 +34,10 @@ const CreatorAndLink = styled.div`
 const CreatorName = styled.h4`
     font-size: 18px;
     font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 `;
 
 const LinkContainer = styled.div`
