@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import styled from 'styled-components';
 import CreatorList from '@/ui/CreatorList';
 import Banner from '@/ui/Banner';
@@ -47,11 +47,20 @@ type HomeLayoutProps = {
 };
 
 export default function HomeLayout(props: HomeLayoutProps) {
+    const [desktop, setDesktop] = useState(true);
     const isDesktop = useMediaQuery({query: '(min-width: 780px)'});
+
+    useEffect(() => {
+        if (isDesktop) {
+            setDesktop(true);
+        } else {
+            setDesktop(false);
+        }
+    }, [isDesktop]);
 
     return (
         <Container>
-            {(isDesktop) ? (
+            {(desktop) ? (
                 <FullGrid>
                     <StyledAside>
                         <CreatorList creatorInfos={props.asideCreatorInfos} />
