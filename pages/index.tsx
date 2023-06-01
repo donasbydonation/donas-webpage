@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
     const queryParamIdx = ctx.query ? (ctx.query[`scheduleIdx`] as string) : "";
-    const page = parseInt(queryParamIdx) || -1;
+    const page = (parseInt(queryParamIdx) || 0) - 1;
 
     const scheduleQueryParam = [
         `time=${getNow()}`,
