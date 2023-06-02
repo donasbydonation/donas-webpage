@@ -4,9 +4,9 @@ import AllSchedulePagination from './AllSchedulePagination';
 import ScheduleList from './ScheduleList';
 import ScheduleHeader from './ScheduleHeader';
 
-const Container = styled.div`
-    margin: 20px 0px 0px 0px;
-`;
+// const Container = styled.div`
+//     margin: 20px 0px 0px 0px;
+// `;
 
 const Footer = styled.div`
     display: flex;
@@ -19,7 +19,7 @@ export type AllSchedulesProps = {totalPage: number, selectedPage: number, schedu
 
 export default function AllSchedules(props: AllSchedulesProps) {
     return (
-        <Container>
+        <div>
             <ScheduleHeader platform={["afreeca", "twitch", "youtube"]} />
             <ScheduleList schedules={props.schedules} />
             <Footer>
@@ -29,6 +29,6 @@ export default function AllSchedules(props: AllSchedulesProps) {
                     selectedPage={props.selectedPage}
                 />
             </Footer>
-        </Container>
+        </div>
     );
 }

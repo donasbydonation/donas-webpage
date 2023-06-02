@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const StyledImg = styled.img`
-    grid-area: banner;
     width: 100%;
 `;
 

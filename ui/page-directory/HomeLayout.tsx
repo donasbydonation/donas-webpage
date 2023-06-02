@@ -16,29 +16,32 @@ const Container = styled.div`
 const FullGrid = styled.div`
     display: grid;
     grid-template:
-        "aside  banner  banner  banner" auto
-        "aside  .       title   ."      53px
-        "aside  .       date    ."      44px
-        "aside  .       main    ."      auto
-       / 283px  26px    auto    26px;
+        "aside  main"   auto
+       / 283px  auto;
 `;
 
 const MobileGrid = styled.div`
     display: grid;
     grid-template:
-        "aside  banner  banner  banner" auto
-        "aside  .       title   ."      53px
-        "aside  .       date    ."      44px
-        "aside  .       main    ."      auto
-       / 32px   26px    auto    26px;
+        "aside  main"   auto
+       / 32px   auto;
 `;
 
 const StyledAside = styled.aside`
     grid-area: aside;
 `;
 
-const StyledMain = styled.main`
+const StyledMain = styled.div`
     grid-area: main;
+    & > * {
+        margin: 0px 26px;
+    }
+    & > *:first-child {
+        margin: 0px 0px;
+    }
+    & > *:last-child {
+        margin: 20px 26px;
+    }
 `;
 
 type HomeLayoutProps = {
@@ -65,10 +68,10 @@ export default function HomeLayout(props: HomeLayoutProps) {
                     <StyledAside>
                         <CreatorList creatorInfos={props.asideCreatorInfos} />
                     </StyledAside>
-                    <Banner />
-                    <ScheduleTitle />
-                    <DatePagination />
                     <StyledMain>
+                        <Banner />
+                        <ScheduleTitle />
+                        <DatePagination />
                         {props.children}
                     </StyledMain>
                 </FullGrid>
@@ -77,10 +80,10 @@ export default function HomeLayout(props: HomeLayoutProps) {
                     <StyledAside>
                         <AsideToggle creatorInfos={props.asideCreatorInfos} />
                     </StyledAside>
-                    <Banner />
-                    <ScheduleTitle />
-                    <DatePagination />
                     <StyledMain>
+                        <Banner />
+                        <ScheduleTitle />
+                        <DatePagination />
                         {props.children}
                     </StyledMain>
                 </MobileGrid>

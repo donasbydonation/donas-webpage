@@ -4,9 +4,9 @@ import { useSearchParams, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 const Container = styled.div`
-    grid-area: date;
     display: flex;
     align-items: flex-end;
+    height: 44px;
     font-size: 16px;
     font-weight: 550;
 `;

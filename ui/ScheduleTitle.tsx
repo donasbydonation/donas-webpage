@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { useSearchParams } from 'next/navigation';
 
 const Container = styled.div`
-    grid-area: title;
     display: flex;
     align-items: flex-end;
+    height: 53px;
 `;
 
 const Image = styled.img`
