@@ -16,10 +16,10 @@ const Icon = styled.img`
     height: 18px;
 `;
 
-export default function BroadcastLink(props: {platform: Platform}) {
+export default function BroadcastLink(props: {platform: string, broadcastLink: string}) {
     return (
-        <Container href={props.platform.broadcastLink} target="_blank">
-            <Icon src={`/images/icons/platforms/${props.platform.provider.toLowerCase()}.svg`} />
+        <Container href={props.broadcastLink} target="_blank">
+            <Icon src={`/images/icons/platforms/${props.platform.toLowerCase()}.svg`} />
         </Container>
     );
 }

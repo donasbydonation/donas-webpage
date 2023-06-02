@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Schedule } from '@/pages/api/v1/schedules/list';
+import { Schedule } from '@/pages/api/v2/schedules';
+import BroadcastLink from './BroadcastLink';
 
 const Container = styled.div`
     padding: 11px;
@@ -9,7 +10,7 @@ const Container = styled.div`
     flex-shrink: 0;
     margin: 13px 15px;
     grid-template:
-        "image  creator"    auto
+        "image  creator-and-link"    auto
         "image  time"       23px
         "desc   desc"       auto
        / 58px   auto;
@@ -23,10 +24,24 @@ const Image = styled.img`
     border-radius: 50%;
 `;
 
+const CreatorAndLink = styled.div`
+    grid-area: creator-and-link;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+`;
+
 const CreatorName = styled.h4`
-    grid-area: creator;
     font-size: 18px;
     font-weight: 700;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+`;
+
+const LinkContainer = styled.div`
+    width: 70px;
 `;
 
 const ScheduledTime = styled.div`
@@ -60,7 +75,14 @@ export default function ScheduleCard(props: {schedule: Schedule}) {
     return (
         <Container>
             <Image src={props.schedule.profileImage} alt={props.schedule.creatorName} />
-            <CreatorName>{props.schedule.creatorName}</CreatorName>
+            <CreatorAndLink>
+                <CreatorName>{props.schedule.creatorName}</CreatorName>
+                <LinkContainer>
+                    {props.schedule.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
+                        <BroadcastLink platform={platform.provider} broadcastLink={platform.broadcastLink} key={idx} />
+                    ))}
+                </LinkContainer>
+            </CreatorAndLink>
             <ScheduledTime>{convdate(props.schedule.scheduledTime)}</ScheduledTime>
             <Description>{props.schedule.description}</Description>
         </Container>

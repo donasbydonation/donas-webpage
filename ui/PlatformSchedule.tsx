@@ -1,35 +1,32 @@
 import styled from 'styled-components';
-import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
-import PlatformSchedulePagination from './PlatformSchedulePagination';
-import ExtendPlatformButton from './ExtendPlatformButton';
+import { Schedule } from '@/pages/api/v2/schedules';
 import ScheduleList from './ScheduleList';
 import ScheduleHeader from './ScheduleHeader';
+
+// Source: https://stackoverflow.com/a/5767357
+function removeItemAll(arr: string[], value: string) {
+    let i = 0;
+    while (i < arr.length) {
+        if (arr[i] === value) {
+            arr.splice(i, 1);
+        } else {
+            ++i;
+        }
+    }
+    return arr;
+}
 
 const Container = styled.div`
     margin: 20px 0px 0px 0px;
 `;
 
-const Footer = styled.div`
-    display: flex;
-    padding: 3px 0px 16px 0px;
-    align-items: center;
-    justify-content: center;
-`;
+export default function PlatformSchedule(props: { platform: string, schedules: Schedule[] }) {
+    const additionalPlatforms = removeItemAll(["afreeca", "twitch", "youtube"], props.platform);
 
-export type PlatformScheduleProps = {platform: string, schedule: PlatformScheduleType, selectedPage: number};
-
-export default function PlatformSchedule(props: PlatformScheduleProps) {
     return (
         <Container>
-            <ScheduleHeader platform={[props.platform]} />
-            <ScheduleList schedule={props.schedule} />
-            <Footer>
-                <PlatformSchedulePagination
-                    eventKey={`${props.platform}Idx`}
-                    totalPages={props.schedule.totalPage}
-                    selectedPage={props.selectedPage}
-                />
-            </Footer>
+            <ScheduleHeader platform={[props.platform, ...additionalPlatforms]} extendable={true} />
+            <ScheduleList schedules={props.schedules} />
         </Container>
     );
 }

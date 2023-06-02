@@ -36,7 +36,7 @@ export default function CreatorItem(props: {creatorInfo: CreatorInfo}) {
                 </Title>
                 <div>
                     {props.creatorInfo.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
-                        <BroadcastLink platform={platform} key={idx} />
+                        <BroadcastLink platform={platform.provider} broadcastLink={platform.broadcastLink} key={idx} />
                     ))}
                 </div>
             </Body>

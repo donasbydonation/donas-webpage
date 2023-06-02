@@ -33,15 +33,15 @@ function Picker(props: {href: string, selected: boolean, children: ReactNode}) {
     );
 }
 
-type PlatformSchedulePaginationProps = {eventKey: string, totalPages: number, selectedPage: number};
+type AllSchedulePaginationProps = {eventKey: string, totalPage: number, selectedPage: number};
 
-export default function PlatformSchedulePagination(props: PlatformSchedulePaginationProps) {
+export default function AllSchedulePagination(props: AllSchedulePaginationProps) {
     const pathname = usePathname();
     const searchParams = useSearchParams()!;
 
     const createQueryString = useCallback((pageNum: number, offset: number = 0) => {
             const params = new URLSearchParams(searchParams);
-            const moveTo = (1 <= pageNum + offset) && (pageNum + offset <= props.totalPages)
+            const moveTo = (1 <= pageNum + offset) && (pageNum + offset <= props.totalPage)
                 ? pageNum + offset
                 : pageNum;
             params.set(props.eventKey, `${moveTo}`);
@@ -56,7 +56,7 @@ export default function PlatformSchedulePagination(props: PlatformSchedulePagina
         [searchParams],
     );
 
-    const pages = Array(props.totalPages).fill(1).map((val, idx) => (val + idx));
+    const pages = Array(props.totalPage).fill(1).map((val, idx) => (val + idx));
 
     return (
         <Container>
@@ -88,7 +88,7 @@ export default function PlatformSchedulePagination(props: PlatformSchedulePagina
             {">"}
             </Picker>
             <Picker
-                href={`${pathname}?${createQueryString(props.totalPages)}`}
+                href={`${pathname}?${createQueryString(props.totalPage)}`}
                 selected={false}
             >
             {">>"}

@@ -9,7 +9,7 @@ services:
     ports:
       - "30300:3000"
     environment:
-      - "BACK_END_URL=server:8080"
+      - "BACK_END_URL=back-end:8080"
 
 networks:
   develop-environment:

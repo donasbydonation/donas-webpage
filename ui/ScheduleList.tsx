@@ -1,22 +1,21 @@
 import styled from 'styled-components';
-import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
+import { Schedule } from '@/pages/api/v2/schedules';
 import ScheduleCard from './ScheduleCard';
 import NoData from './NoData';
 
 const List = styled.div`
     display: flex;
     min-height: 183px;
-    align-items: center;
+    /*align-items: center;*/
     flex-wrap: wrap;
 `;
 
-export default function ScheduleList(props: {schedule: PlatformScheduleType}) {
-    const schedules = props.schedule.schedules.filter(s => (s.broadcastLink !== ""));
+export default function ScheduleList(props: {schedules: Schedule[]}) {
     return (
         <List>
             {
-                (schedules.length !== 0)
-                ? schedules.map((schedule, idx) => (<ScheduleCard schedule={schedule} key={idx} />))
+                (props.schedules.length !== 0)
+                ? props.schedules.map((s, i) => (<ScheduleCard schedule={s} key={i} />))
                 : <NoData>일정이 없습니다.</NoData>
             }
         </List>

@@ -1,21 +1,21 @@
 import styled from 'styled-components';
 import HomeLayout from '@/ui/page-directory/HomeLayout';
-import ExtendedPlatformSchedule from '@/ui/ExtendedPlatformSchedule';
+import PlatformSchedule from '@/ui/PlatformSchedule';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import { PlatformSchedule as PlatformScheduleType } from '@/pages/api/v1/schedules/list';
+import { Schedule } from '@/pages/api/v2/schedules';
 import { GetServerSideProps } from 'next';
 import { getNow } from '@/lib/datetime';
 
 type AfreecaPageProps = {
     creatorInfos: CreatorInfo[],
-    schedules: PlatformScheduleType,
+    schedules: Schedule[],
 };
 
 export default function AfreecaPage(props: AfreecaPageProps) {
     return (
         <HomeLayout asideCreatorInfos={props.creatorInfos} >
-            <ExtendedPlatformSchedule platform="afreeca" schedule={props.schedules} />
+            <PlatformSchedule platform="afreeca" schedules={props.schedules} />
         </HomeLayout>
     );
 }
@@ -29,12 +29,12 @@ export const getServerSideProps: GetServerSideProps<AfreecaPageProps> = async (c
         `provider=AFREECA`,
     ];
 
-    const schedules = await axios.get(`/api/v1/schedules/list?${queryParam.join('&')}`);
+    const schedules = await axios.get(`/api/v2/schedules?${queryParam.join('&')}`);
 
     return {
         props: {
             creatorInfos: creatorInfos.data,
-            schedules: schedules.data.afreeca,
+            schedules: schedules.data.schedules,
         },
     };
 }
