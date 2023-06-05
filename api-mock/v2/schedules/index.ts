@@ -6,7 +6,7 @@ export const data: ResponseBodyDTO = {
     "nowPage": 1,
     "schedules": [
         {
-            "creatorName": "creator-name15",
+            "creatorName": "나츠에 (natsue_lapis)",
             "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
             "platforms": [
                 {

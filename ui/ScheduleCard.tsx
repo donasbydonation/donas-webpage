@@ -38,6 +38,7 @@ const CreatorName = styled.h4`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-break: anywhere;
 `;
 
 const LinkContainer = styled.div`
