@@ -59,6 +59,7 @@ export default function DatePagination() {
     const createDateText = (offset: number):number => {
         const date = new Date();
         date.setDate(date.getDate() + offset);
+        date.setHours(date.getHours() - 12);
         return date.getDate();
     };
 

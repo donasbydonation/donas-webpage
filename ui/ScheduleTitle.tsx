@@ -25,7 +25,8 @@ const DateText = styled.span`
 export default function ScheduleTitle() {
     const date = new Date();
     const searchParams = useSearchParams();
-    date.setDate(date.getDate() + parseInt(searchParams.get("offset") || "0"))
+    date.setDate(date.getDate() + parseInt(searchParams.get("offset") || "0"));
+    date.setHours(date.getHours() - 12);
 
     return (
         <Container>
