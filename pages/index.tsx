@@ -29,9 +29,11 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
 
     const queryParamIdx = ctx.query ? (ctx.query[`scheduleIdx`] as string) : "";
     const page = (parseInt(queryParamIdx) || 0) - 1;
+    const date = new Date();
+    date.setHours(date.getHours() - 12);
 
     const scheduleQueryParam = [
-        `time=${getNow()}`,
+        `time=${date}`,
         `page=${page}`,
         `size=15`,
         `day=${ctx.query?.offset || "0"}`,
