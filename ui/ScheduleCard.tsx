@@ -31,6 +31,13 @@ const CreatorAndLink = styled.div`
     flex-wrap: wrap;
 `;
 
+const ScheduledTimeAndLink = styled.div`
+    grid-area: time;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+`;
+
 const CreatorName = styled.h4`
     font-size: 18px;
     font-weight: 700;
@@ -46,7 +53,6 @@ const LinkContainer = styled.div`
 `;
 
 const ScheduledTime = styled.div`
-    grid-area: time;
     font-size: 15px;
     font-weight: 600;
     color: #FF3363;
@@ -78,13 +84,15 @@ export default function ScheduleCard(props: {schedule: Schedule}) {
             <Image src={props.schedule.profileImage} alt={props.schedule.creatorName} />
             <CreatorAndLink>
                 <CreatorName>{props.schedule.creatorName}</CreatorName>
-                <LinkContainer>
-                    {props.schedule.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
-                        <BroadcastLink platform={platform.provider} broadcastLink={platform.broadcastLink} key={idx} />
-                    ))}
-                </LinkContainer>
             </CreatorAndLink>
-            <ScheduledTime>{convdate(props.schedule.scheduledTime)}</ScheduledTime>
+            <ScheduledTimeAndLink>
+                <ScheduledTime>{convdate(props.schedule.scheduledTime)}</ScheduledTime>
+                <LinkContainer>
+                        {props.schedule.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
+                            <BroadcastLink platform={platform.provider} broadcastLink={platform.broadcastLink} key={idx} />
+                        ))}
+                </LinkContainer>
+            </ScheduledTimeAndLink>
             <Description>{props.schedule.description}</Description>
         </Container>
     );
