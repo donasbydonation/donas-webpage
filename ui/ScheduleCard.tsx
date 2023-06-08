@@ -5,16 +5,18 @@ import BroadcastLink from './BroadcastLink';
 const Container = styled.div`
     padding: 11px;
     display: grid;
+    height: 140px;
     width: calc(20% - 30px);
-    min-width: 165px;
+    min-width: 285px;
     flex-shrink: 0;
-    margin: 13px 15px;
+    margin: 13px 13px;
     grid-template:
-        "image  creator-and-link"    auto
-        "image  time"       23px
+        "image  creator"    auto
+        "image  time-and-link"    23px
         "desc   desc"       auto
        / 58px   auto;
     background-color: #F2F2F2;
+    border-radius: 7px;
 `;
 
 const Image = styled.img`
@@ -25,27 +27,28 @@ const Image = styled.img`
 `;
 
 const CreatorAndLink = styled.div`
-    grid-area: creator-and-link;
+    grid-area: creator;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 `;
 
 const ScheduledTimeAndLink = styled.div`
-    grid-area: time;
+    grid-area: time-and-link;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
 `;
 
 const CreatorName = styled.h4`
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-break: anywhere;
+    height: 27px;
 `;
 
 const LinkContainer = styled.div`
@@ -53,21 +56,22 @@ const LinkContainer = styled.div`
 `;
 
 const ScheduledTime = styled.div`
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     color: #FF3363;
 `;
 
 const Description = styled.p`
     grid-area: desc;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 500;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 78px;
+    height: 50px;
     margin: 15px 0px 0px 0px;
+    padding: 0px 5px 0px 5px;
 `;
 
 function convdate(utc: string): string {
