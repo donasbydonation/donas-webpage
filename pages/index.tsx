@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx)
     const scheduleQueryParam = [
         `time=${getNow()}`,
         `page=${page}`,
-        `size=15`,
+        `size=25`,
         `day=${ctx.query?.offset || "0"}`,
         `provider=TOTAL`,
     ];
