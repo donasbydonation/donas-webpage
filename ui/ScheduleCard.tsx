@@ -7,7 +7,7 @@ const Container = styled.div`
     display: grid;
     height: 140px;
     width: calc(20% - 30px);
-    min-width: 285px;
+    min-width: 275px;
     flex-shrink: 0;
     margin: 13px 13px;
     grid-template:

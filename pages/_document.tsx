@@ -64,7 +64,7 @@ export default class MyDocument extends Document {
           <link rel="manifest" href="/favicon/site.webmanifest" />
           <link rel="shortcut icon" href="/favicon/favicon.ico" />
           {/* Donas metadata */}
-          <meta name="description" content="세계 최초의 수익 공유형 SNS" />
+          <meta name="description" content="놓칠 수 없는 라이브 방송 정보" />
         </Head>
         <body>
           <Main />
