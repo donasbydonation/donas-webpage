@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import CreatorList from '@/ui/CreatorList';
 import UserBanner from '@/ui/UserBanner';
+import UserScheduleList from '@/ui/UserScheduleList';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import { OkResponse } from '@/pages/api/v2/schedules';
 import { GetServerSideProps } from 'next';
 import { getNow } from '@/lib/datetime';
 import { useRouter } from 'next/router'
+
 
 const Container = styled.div`
     padding-top: 47px;
@@ -38,12 +40,12 @@ const StyledMain = styled.div`
 `;
 
 
-type HomePageProps = {
+type UserPageProps = {
     creatorInfos: CreatorInfo[],
     schedules: OkResponse,
 };
 
-export default function HomePage(props: HomePageProps) {
+export default function UserPage(props: UserPageProps) {
     const router = useRouter()
     const { id } = router.query
     
@@ -68,17 +70,16 @@ export default function HomePage(props: HomePageProps) {
                 </StyledAside>
                 <StyledMain>
                     <UserBanner creatorInfo={targetInfo}/>
-                    
-                    {targetInfo?.name}
+                    <UserScheduleList schedules={props.schedules.schedules}/>
                 </StyledMain>
             </FullGrid>
         </Container>
-        
+
         );
     }
 }
 
-export const getServerSideProps: GetServerSideProps<HomePageProps> = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<UserPageProps> = async (ctx) => {
     const creatorInfos = await axios.get(`/api/v1/creator-infos/list`);
 
     const queryParamIdx = ctx.query ? (ctx.query[`scheduleIdx`] as string) : "";
