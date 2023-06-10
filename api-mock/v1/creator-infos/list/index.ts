@@ -4,7 +4,7 @@ export const data: ResponseBodyDTO = [
     {
         "creatorId": 1,
         "name": "송이1",
-        "profileImage": "https://boost-bucket-test.s3.amazonaws.com/creator-infos/05180eb6-bd62-46d0-ad47-7ac23514a39c.png",
+        "profileImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
         "platforms": [
             {
                 "platformId": 1,
