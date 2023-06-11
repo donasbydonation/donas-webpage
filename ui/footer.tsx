@@ -4,6 +4,7 @@ const CopyrightContainer = styled.div`
     color: black;
     font-size: 15px;
     background-color: #FFFFFF;
+    text-align: right;
 `;
 
 export default function Footer() {
