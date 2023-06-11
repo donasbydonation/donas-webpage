@@ -4,21 +4,24 @@ import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import CreatorItem from './CreatorItem';
 
 const Container = styled.div`
+    position: fixed;
+    height: 100%;
     width: 283px;
-    > * {
-        & {
-            height: 55px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 18px;
-        }
-    }
 `;
 
 const Header = styled.div`
     font-size: 17px;
     font-weight: bold;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+`;
+
+const Body = styled.div`
+    height: calc(100% - 87px);
+    overflow: scroll;
 `;
 
 const Button = styled.button`
@@ -44,9 +47,11 @@ export default function CreatorList(props: {creatorInfos: CreatorInfo[]}) {
                     <Search />
                 </Button>
             </Header>
-            {props.creatorInfos.map((creatorInfo, idx) => (
-                <CreatorItem creatorInfo={creatorInfo} key={idx} />
-            ))}
+            <Body>
+                {props.creatorInfos.map((creatorInfo, idx) => (
+                    <CreatorItem creatorInfo={creatorInfo} key={idx} />
+                ))}
+            </Body>
         </Container>
     );
 }
