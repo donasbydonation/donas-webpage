@@ -25,11 +25,11 @@ const Image = styled.img`
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    &:hover{   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    &:hover{   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
                transform: scale(1.1);
                transition: box-shadow 0.3s ease, 
-               transform 0.3s ease;
-               border: 2px solid #f2f2f2; }
+               transform 0.2s ease;
+               border: 1px solid #f8f8f8; }
 `;
 
 const CreatorAndLink = styled.div`
@@ -91,7 +91,7 @@ function convdate(utc: string): string {
 export default function ScheduleCard(props: {schedule: Schedule}) {
     return (
         <Container>
-            <Link href={"/user/"+props.schedule.creatorName}>
+            <Link href={"/user/"+props.schedule.creatorId}>
                 <Image src={props.schedule.profileImage} alt={props.schedule.creatorName} />
             </Link>
             <CreatorAndLink>

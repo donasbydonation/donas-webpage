@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import UserScheduleCard from './UserScheduleCard';
 import NoData from './NoData';
-import { Schedule } from '@/pages/api/v2/schedules';
+import { Schedule } from '@/pages/api/v2/creators/[id]/schedules';
 
 
 const Container = styled.div`

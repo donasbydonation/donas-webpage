@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Schedule } from '@/pages/api/v2/schedules';
+import { Schedule } from '@/pages/api/v2/creators/[id]/schedules';
 import BroadcastLink from './BroadcastLink';
 import Link from 'next/link';
 
@@ -36,16 +36,19 @@ const Description = styled.p`
 
 function convdate(utc: string): string {
     const date = new Date(utc);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDay();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const toString = (i: number) => ((i > 9 ? '' : '0') + i);
-    return `${toString(hours)}:${toString(minutes)}`;
+    return `${toString(year)}.${toString(month)}.${toString(day)} / ${toString(hours)}:${toString(minutes)}`;
 }
 
 export default function ScheduleCard(props: {schedule: Schedule}) {
     return (
         <Container>
-                <ScheduledTime>{props.schedule.scheduledTime}</ScheduledTime>
+                <ScheduledTime>{convdate(props.schedule.scheduledTime)}</ScheduledTime>
             <Description>{props.schedule.description}</Description>
         </Container>
     );

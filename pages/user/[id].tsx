@@ -4,7 +4,7 @@ import UserBanner from '@/ui/UserBanner';
 import UserScheduleList from '@/ui/UserScheduleList';
 import { axios } from '@/lib/axios';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
-import { OkResponse } from '@/pages/api/v2/schedules';
+import { Schedules} from '@/pages/api/v2/creators/[id]/schedules';
 import { GetServerSideProps } from 'next';
 import { getNow } from '@/lib/datetime';
 import { useRouter } from 'next/router'
@@ -42,7 +42,7 @@ const StyledMain = styled.div`
 
 type UserPageProps = {
     creatorInfos: CreatorInfo[],
-    schedules: OkResponse,
+    schedules: Schedules,
 };
 
 export default function UserPage(props: UserPageProps) {
@@ -51,7 +51,7 @@ export default function UserPage(props: UserPageProps) {
     
     let targetInfo = null;
     for (const userinfo of props.creatorInfos){
-        if (userinfo.name == id){
+        if (userinfo.creatorId == Number(id)){
             targetInfo = userinfo;
             break;
         }
@@ -87,13 +87,9 @@ export const getServerSideProps: GetServerSideProps<UserPageProps> = async (ctx)
 
     const scheduleQueryParam = [
         `time=${getNow()}`,
-        `page=${page}`,
-        `size=25`,
-        `day=${ctx.query?.offset || "0"}`,
-        `provider=TOTAL`,
     ];
 
-    const schedules = (await axios.get(`/api/v2/schedules?${scheduleQueryParam.join('&')}`)).data;
+    const schedules = (await axios.get(`/api/v2/creators/${ctx.params?.id}/schedules?${scheduleQueryParam.join('&')}`)).data;
 
     return {
         props: {
