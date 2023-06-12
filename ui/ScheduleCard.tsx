@@ -12,7 +12,7 @@ const Container = styled.div`
     flex-shrink: 0;
     margin: 13px 13px;
     grid-template:
-        "image  creator"    auto
+        "image  creator"    27px
         "image  time-and-link"    23px
         "desc   desc"       auto
        / 58px   auto;
@@ -22,8 +22,8 @@ const Container = styled.div`
 
 const Image = styled.img`
     grid-area: image;
-    width: 46px;
-    height: 46px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     &:hover{   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
                transform: scale(1.1);
@@ -47,6 +47,7 @@ const ScheduledTimeAndLink = styled.div`
 `;
 
 const CreatorName = styled.h4`
+    grid-area: creator;
     font-size: 17px;
     font-weight: 700;
     display: -webkit-box;
@@ -54,7 +55,7 @@ const CreatorName = styled.h4`
     -webkit-box-orient: vertical;
     overflow: hidden;
     line-break: anywhere;
-    height: 27px;
+    height: 25px;
 `;
 
 const LinkContainer = styled.div`
@@ -94,6 +95,7 @@ export default function ScheduleCard(props: {schedule: Schedule}) {
             <Link href={"/user/"+props.schedule.creatorId}>
                 <Image src={props.schedule.profileImage} alt={props.schedule.creatorName} />
             </Link>
+            <CreatorName>{props.schedule.creatorName}</CreatorName>
             <CreatorAndLink>
                 <CreatorName>{props.schedule.creatorName}</CreatorName>
             </CreatorAndLink>
