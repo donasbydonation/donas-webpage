@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Schedule } from '@/pages/api/v2/creators/[id]/schedules';
 import BroadcastLink from './BroadcastLink';
 import Link from 'next/link';
+import { now } from 'moment-timezone';
 
 const Container = styled.div`
     padding: 15px;
@@ -29,7 +30,7 @@ const Description = styled.p`
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    height: 50px;
+    height: 60px;
     margin: 0px 0px 0px 0px;
     padding: 15px 5px 0px 5px;
 `;
@@ -37,8 +38,8 @@ const Description = styled.p`
 function convdate(utc: string): string {
     const date = new Date(utc);
     const year = date.getFullYear();
-    const month = date.getMonth();
-    const day = date.getDay();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const toString = (i: number) => ((i > 9 ? '' : '0') + i);
