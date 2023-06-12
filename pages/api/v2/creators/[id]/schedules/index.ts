@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { ErrorResponse } from '@/lib/axios';
-import { data } from '@/api-mock/v2/schedules';
+import { data } from '@/api-mock/v2/creators/1/schedules';
 
 export type Platform = {
     provider: "AFREECA"|"TWITCH"|"YOUTUBE",
@@ -8,24 +8,22 @@ export type Platform = {
 };
 
 export type Schedule = {
-    creatorId: number,
-    creatorName: string,
-    profileImage: string,
-    platforms: Platform[],
+    scheduleId: number,
     title: string,
     bannerImage: string,
     description: string,
     scheduledTime: string,
-};
+}
 
-export type OkResponse = {
-    totalPage: number,
-    recommendPage: number,
-    nowPage: number,
+export type Schedules = {
+    creatorId: number,
+    creatorName: string,
+    profileImage: string,
+    platforms: Platform[],
     schedules: Schedule[],
 };
 
-export type ResponseBodyDTO = ErrorResponse|OkResponse;
+export type ResponseBodyDTO = Schedules|ErrorResponse;
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<ResponseBodyDTO>)  {
     if (process.env.NODE_ENV === "development") {
