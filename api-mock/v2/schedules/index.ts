@@ -25,7 +25,7 @@ export const data: ResponseBodyDTO = {
             ],
             "title": "title15",
             "bannerImage": "bannerImage15",
-            "description": "description15",
+            "description": "description15description15description15description15description1\ndescription15description15",
             "scheduledTime": "2023-05-03T15:00:00Z"
         },
         {
