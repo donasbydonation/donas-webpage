@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CreatorList from '@/ui/CreatorList';
 import AsideToggle from '@/ui/AsideToggle';
-import styled from 'styled-components';
-import CreatorList from '@/ui/CreatorList';
 import UserBanner from '@/ui/UserBanner';
 import UserScheduleList from '@/ui/UserScheduleList';
 import { axios } from '@/lib/axios';
