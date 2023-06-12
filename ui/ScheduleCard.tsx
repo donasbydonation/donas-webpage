@@ -96,6 +96,9 @@ export default function ScheduleCard(props: {schedule: Schedule}) {
                 <Image src={props.schedule.profileImage} alt={props.schedule.creatorName} />
             </Link>
             <CreatorName>{props.schedule.creatorName}</CreatorName>
+            <CreatorAndLink>
+                <CreatorName>{props.schedule.creatorName}</CreatorName>
+            </CreatorAndLink>
             <ScheduledTimeAndLink>
                 <ScheduledTime>{convdate(props.schedule.scheduledTime)}</ScheduledTime>
                 <LinkContainer>
