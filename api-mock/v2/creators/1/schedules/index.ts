@@ -34,8 +34,8 @@ export const data: ResponseBodyDTO = {
             "scheduleId": 1,
             "title": "안녕하세용",
             "bannerImage": "https://yt3.ggpht.com/bHK1E0WBTePF6n5EgRTnEIcmqbnHeuJ8_2NZz5WwB5ggOZlAzWHCwK7_6rlcJeqp0Lci4bHq7w=s176-c-k-c0x00ffffff-no-rj-mo",
-            "description": "방송입니다.\n 방송이에요. \n 왜 줄바꿈이 안되지",
-            "scheduledTime": "2023-05-01T15:00:00Z"
+            "description": "방송입니다. 방송이에요. 왜 줄바꿈이 안되지",
+            "scheduledTime": "2023-05-03T15:00:00Z"
         },
     ]
 };
