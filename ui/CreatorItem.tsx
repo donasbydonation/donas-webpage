@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { CreatorInfo } from '@/pages/api/v1/creator-infos/list';
 import BroadcastLink from './BroadcastLink';
+import Link from 'next/link';
 
 const Container = styled.div`
     display: flex;
@@ -31,17 +32,22 @@ const Title = styled.h3`
 export default function CreatorItem(props: {creatorInfo: CreatorInfo}) {
     return (
         <Container>
-            <Image src={props.creatorInfo.profileImage} alt={`${props.creatorInfo.name}`}/>
+            <Link href={"/user/"+props.creatorInfo.creatorId}>
+                <Image src={props.creatorInfo.profileImage} alt={`${props.creatorInfo.name}`}/>
+            </Link>
             <Body>
-                <Title>
-                    {props.creatorInfo.name}
-                </Title>
+                <Link href={"/user/"+props.creatorInfo.creatorId} style={{"textDecoration":"none", "color":"black"}}>
+                    <Title>
+                        {props.creatorInfo.name}
+                    </Title>
+                </Link>
                 <div>
                     {props.creatorInfo.platforms.filter(p => (p.broadcastLink !== "")).map((platform, idx) => (
                         <BroadcastLink platform={platform.provider} broadcastLink={platform.broadcastLink} key={idx} />
                     ))}
                 </div>
             </Body>
+            
         </Container>
     );
 }
