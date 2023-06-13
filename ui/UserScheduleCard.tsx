@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Schedule } from '@/pages/api/v2/creators/[id]/schedules';
 import BroadcastLink from './BroadcastLink';
 import Link from 'next/link';
-import { now } from 'moment-timezone';
 
 const Container = styled.div`
     padding: 15px;
@@ -36,14 +35,16 @@ const Description = styled.p`
 `;
 
 function convdate(utc: string): string {
+    const arrayDay = ["일", "월", "화", "수", "목", "금", "토"]
     const date = new Date(utc);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
-    const day = date.getDate();
+    const my_date = date.getDate();
+    const day = date.getDay();
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const toString = (i: number) => ((i > 9 ? '' : '0') + i);
-    return `${toString(year)}.${toString(month)}.${toString(day)} / ${toString(hours)}:${toString(minutes)}`;
+    return `${toString(year)}.${toString(month)}.${toString(my_date)}(${arrayDay[day]}) / ${toString(hours)}:${toString(minutes)}`;
 }
 
 export default function ScheduleCard(props: {schedule: Schedule}) {
