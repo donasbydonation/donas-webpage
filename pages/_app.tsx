@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }: AppProps) {
         {/* Title tag must be placed in _app.tsx */}
         {/* @see https://nextjs.org/docs/messages/no-title-in-document-head */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6768978112594947"
-          crossorigin="anonymous"></script>
+          crossOrigin="anonymous"></script>
         <title>도나스 | Donas</title>
       </Head>
       <GlobalNav />
