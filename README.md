@@ -1,5 +1,7 @@
 # Donas webpage
 
+> End-Of-Service Notice: The Donas project officially closed on July 4, 2023.
+
 ## Proposals
 
 ### Development proposal (Updated May 12, 2023)
